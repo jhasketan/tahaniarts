@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -15,6 +17,9 @@ import { SignupComponent } from './core/authentication/components/signup/signup.
 import { ForgotPasswordComponent } from './core/authentication/components/forgot-password/forgot-password.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgHttpLoaderModule} from 'ng-http-loader';
+import { HomeComponent } from './features/home/home.component';
+import { NotFoundComponent } from './core/not-found/not-found.component';
+import { SettingsComponent } from './core/settings/settings.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,12 +27,17 @@ import { NgHttpLoaderModule} from 'ng-http-loader';
     FooterComponent,
     LoginComponent,
     SignupComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    HomeComponent,
+    NotFoundComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     ToastrModule.forRoot({
