@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaintingListComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    
+   }
 
   ngOnInit(): void {
+    
   }
 
 }

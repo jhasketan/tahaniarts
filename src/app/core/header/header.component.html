@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand text-uppercase" href="#">Tahani<sub>Arts</sub></a>
     <button
       class="navbar-toggler"
@@ -11,7 +11,7 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
       <ul class="navbar-nav" *ngIf="userLoggedIn; else NotLoggedIn">
         <li class="nav-item active">
           <a class="nav-link" routerLink="home"
@@ -21,12 +21,12 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="painting">Paintings</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" routerLink="master-inventory">Master Inventory</a>
-        </li>
-        <li class="nav-item">
+        </li> -->
+        <!-- <li class="nav-item">
           <a class="nav-link" routerLink="registrations">Registrations</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" routerLink="settings">Settings</a>
         </li>

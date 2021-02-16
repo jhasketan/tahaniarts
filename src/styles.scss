@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+body, html {
+    height: 100%;
+    overflow:hidden;
+  }
+  
+  .bg {
+    /* The image used */
+    background-image: url("./assets/images/pexels-photo-1646953.jpeg");
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  form{
+      label{
+          color:white; 
+      }
+      .btn-color{
+        background-color: #4da5b3;
+        color:white;
+        &:hover{
+            background-color: rgb(173 55 55 / 20%);
+            color: white;
+        }
+      }
+      .btn-link{
+       color:#000;
+       font-size:12px;
+      }
+  }
+  .mt-40{
+      margin-top:10% !important;
+  }
+  .form-container{
+    height:100%;
+    width:100%;
+    background-color: rgba(255, 0, 0, 0.2);
+    padding-bottom:80px;
+   
+}
