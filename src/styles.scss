@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body, html {
     height: 100%;
-    overflow:hidden;
   }
   
   .bg {
@@ -18,10 +17,7 @@ body, html {
     background-attachment: fixed;
   }
 
-  form{
-      label{
-          color:white; 
-      }
+  form{  
       .btn-color{
         background-color: #4da5b3;
         color:white;

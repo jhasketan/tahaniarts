@@ -20,6 +20,8 @@ import { NgHttpLoaderModule} from 'ng-http-loader';
 import { HomeComponent } from './features/home/home.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { SettingsComponent } from './core/settings/settings.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +47,8 @@ import { SettingsComponent } from './core/settings/settings.component';
       positionClass: "toast-top-right",
       preventDuplicates: false
     }),
-    NgHttpLoaderModule.forRoot()
+    NgHttpLoaderModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

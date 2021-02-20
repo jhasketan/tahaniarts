@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-painting-form',
-  templateUrl: './painting-form.component.html',
-  styleUrls: ['./painting-form.component.scss']
+  selector: 'app-painting-review',
+  templateUrl: './painting-review.component.html',
+  styleUrls: ['./painting-review.component.scss']
 })
-export class PaintingFormComponent implements OnInit {
+export class PaintingReviewComponent implements OnInit {
 
   constructor(private modalService:BsModalService) { }
 
