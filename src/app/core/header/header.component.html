@@ -12,7 +12,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto" *ngIf="userLoggedIn; else NotLoggedIn">
+      <ul class="navbar-nav mr-auto" *ngIf="userLoggedIn; else NotLoggedIn">
         <li class="nav-item active">
           <a class="nav-link" routerLink="home"
             >Home <span class="sr-only">(current)</span></a
@@ -21,19 +21,29 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="painting">Paintings</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="master-inventory">Master Inventory</a>
-        </li> -->
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="registrations">Registrations</a>
-        </li> -->
-        <li class="nav-item">
-          <a class="nav-link" routerLink="settings">Settings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="logout()">Logout</a>
-        </li>
       </ul>
+
+     
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="add to cart"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+        
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i></a>
+              <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="#one">My Profile</a>
+                <a class="dropdown-item" href="#one">My Orders</a>
+                <a class="dropdown-item" href="#two">My Queries</a>
+                <a class="dropdown-item" routerLink="like">Wish List</a>
+                <a role="separator" class="dropdown-divider"></a>
+                <a class="dropdown-item" routerLink="settings">Settings</a>
+                <a class="dropdown-item" (click)="logout()">LogOut</a>
+              </div>
+            </li>
+            
+          </ul>
+     
     </div>
   </nav>
   

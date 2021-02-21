@@ -20,7 +20,7 @@ export class PaintingListComponent implements OnInit {
     const initialState = {
       title: 'Modal with component'
     };
-    const modalRef:BsModalRef = this.modalService.show(PaintingFormComponent,{});
+    const modalRef:BsModalRef = this.modalService.show(PaintingFormComponent,{class:'modal-lg'});
     modalRef.content.closeBtnName = 'Close';
   }
   openPaintingModal(){

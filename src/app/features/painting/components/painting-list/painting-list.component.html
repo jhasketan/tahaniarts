@@ -1,21 +1,26 @@
-<div class="col-12 pt-4">
-  <div class="d-flex justify-content-end">
-      <button type="button" class="btn btn-primary" (click)="openModal()">Add</button>
-      <button type="button" class="btn btn-sm btn-danger text-white mr-2">Delete</button>
+<div class="col-12">
+  <div class="d-flex justify-content-end mb-3">
+      <button type="button" class="btn btn-primary mr-2" (click)="openModal()">Add</button>
+      <!-- <button type="button" class="btn btn-sm btn-danger text-white "><i class="fas fa-trash"></i></button> -->
   </div>
-  <div class="card mb-3 pt-3 mr-xl-3 col-12 col-md-4 col-xl-3">
+  <div class="card mb-3 px-0 mr-xl-3 col-12 col-md-4 col-xl-3">
+       
       <a href="" class="card-link">
         <img src="../../../../../assets/images/img1.jpeg" class="card-img-top" alt="...">
         </a>
-        <div class="card-body px-0">
-            <h5 class="card-title">Painting name</h5>
-            <p class="card-text mb-0"><small class="text-muted">by artist name</small></p>
+        <div class="card-body px-2">
+            <div class="d-flex justify-content-between">
+            <h5 class="card-title mb-0">Painting name</h5>
+            <button type="button" class="btn btn-sm btn-default trash-painting"><i class="fas fa-trash"></i></button>
+            </div>
+            <p class="card-text"><small class="text-muted">by artist name</small></p>
             <p class="card-text">Price 120000</p>
             <div class="d-flex">
-            <button type="button" class="btn btn-outline-primary mr-auto"><img class="img-icon" src="../../../../../assets/icons/heart.svg" alt=""></button>
-            <button type="button" class="btn btn-outline-primary mr-2" (click)="openPaintingModal()">Quick review</button>
-            <button type="button" class="btn btn-outline-primary mr-2" (click)="openPaintingModal()">View details</button>
-            <button type="button" class="btn btn-outline-primary"><img class="img-icon" src="../../../../../assets/icons/shopping-cart.svg"></button>
+            <!-- <button type="button" class="btn btn-link mr-auto px-0" (click)="openPaintingModal()">Quick review</button> -->
+            <button type="button" class="btn btn-link mr-auto px-0" (click)="openPaintingModal()">View details</button>
+            <button type="button" class="btn btn-default px-0" routerLink="/like"><i class="fas text-danger fa-heart"></i></button>
+           
+            <button type="button" class="btn btn-default px-1 ml-1" routerLink="/add to cart"><i class="fas text-primary fa-shopping-cart"></i></button>
            </div>
       </div>
   </div>

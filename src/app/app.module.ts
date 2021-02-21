@@ -21,6 +21,7 @@ import { HomeComponent } from './features/home/home.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { SettingsComponent } from './core/settings/settings.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
       preventDuplicates: false
     }),
     NgHttpLoaderModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    TabsModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

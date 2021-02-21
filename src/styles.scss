@@ -5,16 +5,16 @@ body, html {
   
   .bg {
     /* The image used */
-    background-image: url("./assets/images/background.jpg");
+    // background-image: url("./assets/images/background.jpg");
   
-    /* Full height */
-    height: 100%;
+    // /* Full height */
+    // height: 100%;
   
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+    // /* Center and scale the image nicely */
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-attachment: fixed;
   }
 
   form{  
@@ -40,4 +40,33 @@ body, html {
     background-color: rgb(4 1 1 / 20%);
     padding-bottom:80px;
    
+}
+.table thead th {
+  border-bottom:none !important; 
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.nav-tabs{
+  border-bottom:none !important;
+}
+.nav-items.active{
+  border-bottom: 4px solid orange !important;
 }

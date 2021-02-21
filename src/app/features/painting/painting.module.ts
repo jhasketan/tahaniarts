@@ -6,8 +6,10 @@ import { PaintingRoutingModule } from './painting-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaintingReviewComponent } from './components/painting-review/painting-review.component';
 import { PaintingEditPreviewComponent } from './components/painting-edit-preview/painting-edit-preview.component';
+import { AddToCartComponent } from './components/add-to-cart/add-to-cart.component';
+import { LikeCartComponent } from './components/like-cart/like-cart.component';
 @NgModule({
-  declarations: [PaintingListComponent, PaintingFormComponent, PaintingReviewComponent, PaintingEditPreviewComponent],
+  declarations: [PaintingListComponent, PaintingFormComponent, PaintingReviewComponent, PaintingEditPreviewComponent, AddToCartComponent, LikeCartComponent],
   imports: [
     CommonModule,
     PaintingRoutingModule,

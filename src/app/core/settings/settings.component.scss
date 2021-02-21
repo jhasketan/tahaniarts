@@ -1,0 +1,31 @@
+.table{
+  background:#fff;
+  font-size:14px;
+  table, td {
+    border-collapse: collapse;
+  }
+  
+  thead {
+    display: table; /* to take the same width as tr */
+    width:100%;
+  }
+  
+  tbody {
+    display: block; /* to enable vertical scrolling */
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  
+  tr {
+    display: table; /* display purpose; th's border */
+    width: 100%;
+    box-sizing: border-box; /* because of the border (Chrome needs this line, but not FF) */
+    &:hover{
+        box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.2);
+     }
+    }
+  }
+ .card{
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.2);
+ }
