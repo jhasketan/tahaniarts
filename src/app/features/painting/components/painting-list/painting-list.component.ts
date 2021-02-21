@@ -27,7 +27,7 @@ export class PaintingListComponent implements OnInit {
     const initialState = {
       title: 'Modal with component'
     };
-    const modalRef:BsModalRef = this.modalService.show(PaintingReviewComponent,{});
+    const modalRef:BsModalRef = this.modalService.show(PaintingReviewComponent,{class:'modal-lg'});
     modalRef.content.closeBtnName = 'Close';
   }
   }

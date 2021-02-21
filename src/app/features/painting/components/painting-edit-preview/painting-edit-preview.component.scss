@@ -1,0 +1,25 @@
+.card{
+    display: inline-block;
+    .card-link{
+      width:100%;
+      img{
+        max-width:100%;
+       }
+    }
+    
+    // icons img 
+    .card-body{
+        button{
+            .img-icon{
+                width:16px;
+                height:16px;
+            }
+        }
+    }
+
+.cart-img{
+    width:40px;
+    height:40px;
+}
+
+}

@@ -5,8 +5,9 @@ import { PaintingFormComponent } from './components/painting-form/painting-form.
 import { PaintingRoutingModule } from './painting-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaintingReviewComponent } from './components/painting-review/painting-review.component';
+import { PaintingEditPreviewComponent } from './components/painting-edit-preview/painting-edit-preview.component';
 @NgModule({
-  declarations: [PaintingListComponent, PaintingFormComponent, PaintingReviewComponent],
+  declarations: [PaintingListComponent, PaintingFormComponent, PaintingReviewComponent, PaintingEditPreviewComponent],
   imports: [
     CommonModule,
     PaintingRoutingModule,
