@@ -5,11 +5,20 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form> 
+            <div class="form-group col-12">
+                <label for="name">Upload Painting</label>
+            <div class="custom-file">
+                <!-- <label for="name">Upload Painting</label> -->
+                <input type="file" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+              </div>
+            </div>
           <div class="form-group col-12">
             <label for="name">Name</label>
             <input type="text" class="form-control"  placeholder="Painting name">
           </div>
+          
           <div class="d-flex flex-wrap">
           <div class="form-group col-6">
             <label>Artist name</label>
@@ -37,23 +46,25 @@
           </div>
           <label class="col-12">Size</label>
           <div class="d-flex flex-wrap">
-              <div class="form-group col-6">
+              <div class="form-group col-md-3 col-6">
                   <label>width</label>
                 <input type="text" class="form-control"  placeholder="width">
               </div>
-              <div class="form-group col-6">
+              <div class="col-md-1 d-flex"><i class="ml-sm-2 m-auto fas fa-times"></i></div>
+              <div class="form-group col-md-4 col-6">
                   <label>height</label>
                 <input type="text" class="form-control"  placeholder="height">
+                
               </div>
-            <div class="form-group col-12">
-              <label>Unit</label>
-              <select class="form-control">
-                <option>cm</option>
-                <option>inch</option>
-                <option>width</option>
-                <option>height</option>
-              </select>
-            </div>
+              <div class="form-group col-md-4 col-12">
+                  <label>Unit</label>
+                  <select class="form-control">
+                    <option>cm</option>
+                    <option>inch</option>
+                    <option>width</option>
+                    <option>height</option>
+                  </select>
+                </div>
               
           
           </div>
