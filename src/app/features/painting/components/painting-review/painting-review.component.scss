@@ -23,3 +23,40 @@
 }
 
 }
+
+.card{
+    font-family: 'Poppins';
+    .card-title{
+        font-size:14px;
+        font-family: 'Poppins';
+    }
+    .card-text{
+        font-size:14px;
+        font-family: 'Poppins';
+    }
+   
+}
+.btn-edit{
+position: absolute;
+right: 8px;
+top: 4px;
+}
+.btn-common{
+    background:#538eb4;
+    color:#fff;
+    font-size:14px;
+    &:hover{
+      background:#4E6879;
+      color:#fff;
+    }
+  }
+
+ .black-btn{
+  background: black;
+  color: white;
+  font-size:14px;
+  &:hover{
+      background:#323232;
+      color:#fff;  
+  }
+ }

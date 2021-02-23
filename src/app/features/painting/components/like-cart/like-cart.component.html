@@ -1,4 +1,5 @@
 <div class="card mb-3 pb-3 col-12">
+    <button type="button" class="btn btn-default btn-trash"><i class="fas fa-trash"></i></button>
         <div class="row no-gutters">
           <div class="col-md-2 col-xl-2 col-6">
             <img src="../../../../../assets/images/img1.jpeg" class="card-img p-3" alt="...">
@@ -11,13 +12,18 @@
                   <p class="card-text"><small class="text-muted">description</small></p>
               </div> 
              </div>
-          <div class="col-12 d-flex flex-wrap justify-content-between">
+          <!-- <div class="col-12 d-flex flex-wrap justify-content-between">
                 <button type="button" class="btn btn-sm btn-warning px-4">Place to order</button>
               <div class="d-flex">
                     <button type="button" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                   <button type="button" class="btn btn-sm btn-warning  ml-2">Move to cart</button> 
               </div>
-          </div>
+          </div> -->
+          
+          <div class="d-flex flex-lg-row justify-content-end flex-column">
+              <button type="button" class="btn btn-default mb-2 mr-lg-2 text-uppercase btn-common">Place to order</button>
+                  <button type="button" class="btn btn-default mb-2 text-uppercase black-btn" routerLink="/add to cart">Move to cart</button>
+             </div>
         </div>
         
       </div>
