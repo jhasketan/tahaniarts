@@ -1,15 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
 body, html {
     height: 100%;
     overflow: hidden;
-    
   }
   
   .bg {
     /* The image used */
     // background-image: url("./assets/images/bg.jpg");
     // background-image: url("./assets/images/bg2.jpg");
-    background-image: url("./assets/images/bg3.jpg");
+    // background-image: url("./assets/images/bg3.jpg");
     // background-image: url("./assets/images/bg4.jpg");
    
   
@@ -78,3 +78,4 @@ body, html {
 .nav-items.active{
   border-bottom: 4px solid orange !important;
 }
+
