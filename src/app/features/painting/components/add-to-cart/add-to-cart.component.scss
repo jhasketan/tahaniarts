@@ -31,3 +31,32 @@ position: absolute;
 right: 8px;
 top: 4px;
 }
+
+.btn-save{
+    font-size:14px;
+    border:1px solid #4E6879;
+    &:hover{
+        background:#538eb4;
+        color:white;
+    }
+}
+
+.img-add{
+    padding-bottom:30px;
+} 
+
+@media (max-width:375px){
+    .btn-trash{
+        position: absolute;
+        right: 0px;
+        top: 0px;
+    }
+    .card{
+        padding:0px;
+        }
+    .card-body{
+    padding:10px !important;
+    }
+  
+    
+}

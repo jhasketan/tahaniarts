@@ -8,8 +8,9 @@ import { PaintingReviewComponent } from './components/painting-review/painting-r
 import { PaintingEditPreviewComponent } from './components/painting-edit-preview/painting-edit-preview.component';
 import { AddToCartComponent } from './components/add-to-cart/add-to-cart.component';
 import { LikeCartComponent } from './components/like-cart/like-cart.component';
+import { ProceedToCheckoutComponent } from './components/proceed-to-checkout/proceed-to-checkout.component';
 @NgModule({
-  declarations: [PaintingListComponent, PaintingFormComponent, PaintingReviewComponent, PaintingEditPreviewComponent, AddToCartComponent, LikeCartComponent],
+  declarations: [PaintingListComponent, PaintingFormComponent, PaintingReviewComponent, PaintingEditPreviewComponent, AddToCartComponent, LikeCartComponent, ProceedToCheckoutComponent],
   imports: [
     CommonModule,
     PaintingRoutingModule,
