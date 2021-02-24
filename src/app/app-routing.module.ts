@@ -9,6 +9,7 @@ import { SettingsComponent } from './core/settings/settings.component';
 import { HomeComponent } from './features/home/home.component';
 import { AddToCartComponent } from './features/painting/components/add-to-cart/add-to-cart.component';
 import { LikeCartComponent } from './features/painting/components/like-cart/like-cart.component';
+import { ProceedToCheckoutComponent } from './features/painting/components/proceed-to-checkout/proceed-to-checkout.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
    path:'like',
    component:LikeCartComponent
+  },
+  {
+    path:'proceed to checkout',
+    component:ProceedToCheckoutComponent
   },
   {
     path: '**',

@@ -1,2 +1,24 @@
-
+.btn-common{
+    background:#538eb4;
+    color:#fff;
+    font-size:14px;
+    &:hover{
+      background:#4E6879;
+      color:#fff;
+    }
+  }
    
+  form{
+    label{
+        font-size: 12px;
+        font-family: 'Poppins';
+    }
+    input{
+        font-size: 12px;
+        font-family: 'Poppins';
+    }
+}
+.form-container{
+    height: 300px;
+    background:none;
+}

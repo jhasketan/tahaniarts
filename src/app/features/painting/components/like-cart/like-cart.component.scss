@@ -31,3 +31,22 @@ position: absolute;
 right: 8px;
 top: 4px;
 }
+.img-add{
+    padding-bottom:30px;
+} 
+
+@media (max-width:375px){
+    .btn-trash{
+        position: absolute;
+        right: 0px;
+        top: 0px;
+    }
+    .card{
+        padding:0px;
+        }
+    .card-body{
+    padding:10px !important;
+    }
+  
+    
+}
