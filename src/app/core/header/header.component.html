@@ -16,25 +16,24 @@
       <ul class="navbar-nav mr-auto" *ngIf="userLoggedIn; else NotLoggedIn">
         <li class="nav-item active">
           <a class="nav-link" routerLink="home"
-            >Home <span class="sr-only">(current)</span></a
-          >
+            ><span class="text-white"><i class="fas fa-home"></i></span> Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="painting">Paintings</a>
+          <a class="nav-link" routerLink="painting"><span class="text-white"><i class="fas fa-paint-brush pr-1"></i></span>Paintings</a>
         </li>
       </ul>
 
      
       <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-              <a class="nav-link" routerLink="like"><i class="fas fa-heart"></i></a>
+              <a class="nav-link" routerLink="like"><i class="fas fa-heart pr-1"></i>Wish list</a>
             </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="add to cart"><i class="fas fa-shopping-cart"></i></a>
+          <a class="nav-link" routerLink="add to cart"><i class="fas fa-shopping-cart pr-1"></i>Cart</a>
         </li>
         
           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i></a>
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle pr-1"></i><span class="text-white">Profile</span></a>
               <div class="dropdown-menu dropdown-menu-right">
                   <a class="dropdown-item" href="#one">My Profile</a>
                 <a class="dropdown-item" href="#one">My Orders</a>
