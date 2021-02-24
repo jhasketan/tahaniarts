@@ -9,19 +9,19 @@
     <div class="card mb-3">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="../../../../../assets/images/img1.jpeg" class="card-img p-3" alt="...">
+            <img [src]="painting?.data?.images?.front" class="card-img p-3" alt="...">
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">Painting name</h5>
-              <p class="card-text mb-0"><small class="text-muted"><span class="fw-500">By:</span> artist name</small></p>
-              <p class="card-text"><small class="text-muted"><span class="fw-500">Created On:</span> 17 feb</small></p>
-              <p class="card-text"><span>Size:</span> 12*20in 136*51cm</p>
-              <p class="card-text"><span class="fw-500">Material:</span> paper</p>
-              <p class="card-text"><span class="fw-500">Medium:</span> water color</p>
-              <p class="card-text"><span class="fw-500">Type:</span> Abstract</p>
-              <p class="card-text"><span class="fw-500">Description</span> ...This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><span class="fw-500"><i class="fas fa-rupee-sign"></i> </span>120000</p>
+              <h5 class="card-title">{{painting?.data?.name}}</h5>
+              <p class="card-text mb-0"><small class="text-muted"><span class="fw-500">By:</span>{{painting?.data?.artist}}</small></p>
+              <p class="card-text"><small class="text-muted"><span class="fw-500">Added On:</span>{{painting?.data?.createdOn?.toDate() | date}}</small></p>
+              <p class="card-text"><span>Size: </span>{{painting?.data?.size?.height}}H X {{painting?.data?.size?.width}}W {{painting?.data?.size?.unit}}</p>
+              <p class="card-text"><span class="fw-500">Material:</span>{{painting?.data?.material}}</p>
+              <p class="card-text"><span class="fw-500">Medium:</span>{{painting?.data?.medium}}</p>
+              <p class="card-text"><span class="fw-500">Type:</span> {{painting?.data?.type}}</p>
+              <p class="card-text"><span class="fw-500">Description</span>{{painting?.data?.description}}</p>
+              <p class="card-text"><span class="fw-500"><i class="fas fa-rupee-sign"></i> </span> {{painting?.data?.price?.value}}</p>
                <div class="d-flex flex-lg-row justify-content-end flex-column">
                     <button type="button" class="btn btn-default mb-2 mr-lg-2 text-uppercase btn-common">place order</button>
                     <button type="button" class="btn btn-default mb-2 text-uppercase black-btn">Move to wishlist</button>
@@ -30,7 +30,7 @@
           </div>
       </div>
         <div class="btn-edit">
-        <button type="button" class="btn btn-default ml-2"><i class="fas fa-pencil"></i></button>
+        <button type="button" class="btn btn-default ml-2" (click)="openUpdateForm(painting.id)"><i class="fas fa-pencil"></i></button>
         </div>
       </div>
   </div>

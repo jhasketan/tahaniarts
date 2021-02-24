@@ -13,6 +13,6 @@ import { PaintingEditPreviewComponent } from './components/painting-edit-preview
     PaintingRoutingModule,
     FormsModule
   ],
-  entryComponents:[PaintingFormComponent]
+  entryComponents:[]
 })
 export class PaintingModule { }

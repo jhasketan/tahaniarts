@@ -1,93 +1,106 @@
-     <div class="modal-header">
-        <h4 class="modal-title pull-left">Add Painting</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Add Painting</h4>
+  <button
+    type="button"
+    class="close pull-right"
+    aria-label="Close"
+    (click)="closeForm()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <form>
+      <div class="form-group col-12">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" placeholder="Painting name" />
       </div>
-      <div class="modal-body">
-        <form> 
-            <div class="form-group col-12">
-                <label for="name">Upload Painting</label>
-            <div class="custom-file">
-                <!-- <label for="name">Upload Painting</label> -->
-                <input type="file" class="custom-file-input" id="customFile">
-                <label class="custom-file-label" for="customFile">Choose file</label>
-              </div>
-            </div>
-          <div class="form-group col-12">
-            <label for="name">Name</label>
-            <input type="text" class="form-control"  placeholder="Painting name">
-          </div>
-          
-          <div class="d-flex flex-wrap">
-          <div class="form-group col-6">
-            <label>Artist name</label>
-            <input type="text" class="form-control"  placeholder="Artist name">
-          </div>
-          <div class="form-group col-6">
-              <label>Price</label>
-              <input type="text" class="form-control"  placeholder="Price">
-            </div>
-          </div>
-          <div class="d-flex flex-wrap">
-              <div class="form-group col-6">
-                  <label>Type</label>
-                  <select class="form-control">
-                    <option>Abstract</option>
-                    <option>Expressionism</option>
-                  </select>
-              </div>
-                <div class="form-group col-6">
-                    <label>Material</label>
-                    <select class="form-control">
-                      <option>Paper</option>
-                    </select>
-                </div>
-          </div>
-          <label class="col-12">Size</label>
-          <div class="d-flex flex-wrap">
-              <div class="form-group col-md-3 col-6">
-                  <label>width</label>
-                <input type="text" class="form-control"  placeholder="width">
-              </div>
-              <div class="col-md-1 d-flex"><i class="ml-sm-2 m-auto fas fa-times"></i></div>
-              <div class="form-group col-md-4 col-6">
-                  <label>height</label>
-                <input type="text" class="form-control"  placeholder="height">
-                
-              </div>
-              <div class="form-group col-md-4 col-12">
-                  <label>Unit</label>
-                  <select class="form-control">
-                    <option>cm</option>
-                    <option>inch</option>
-                    <option>width</option>
-                    <option>height</option>
-                  </select>
-                </div>
-              
-          
-          </div>
-         
-            <div class="d-flex flex-wrap">
-              <div class="form-group col-6">
-                  <label>Created on</label>
-                <input type="date" class="form-control"  placeholder="created on">
-              </div>
-              <div class="form-group col-6">
-                  <label>Medium</label>
-                  <select class="form-control">
-                    <option>water color</option>
-                  </select>
-                </div>
-            </div>
-          <div class="form-group col-12">
-            <label>Description</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
-        </form>
+      <div class="form-group col-12">
+        <label for="name">Upload Painting</label>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="customFile" />
+          <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn  btn-secondary" (click)="close()">Cancel</button>
-        <button type="button" class="btn btn-common" (click)="close()">Save</button>
+
+      <div class="d-flex flex-wrap">
+        <div class="form-group col-6">
+          <label>Artist name</label>
+          <input type="text" class="form-control" placeholder="Artist name" />
+        </div>
+        <div class="form-group col-6">
+          <label>Price</label>
+          <input type="text" class="form-control" placeholder="Price" />
+        </div>
       </div>
+      <div class="d-flex flex-wrap">
+        <div class="form-group col-6">
+          <label>Type</label>
+          <select class="form-control">
+            <option>Abstract</option>
+            <option>Expressionism</option>
+          </select>
+        </div>
+        <div class="form-group col-6">
+          <label>Material</label>
+          <select class="form-control">
+            <option>Paper</option>
+          </select>
+        </div>
+      </div>
+      <label class="col-12">Size</label>
+      <div class="d-flex flex-wrap">
+        <div class="form-group col-md-2 col-3">
+          <label>width</label>
+          <input type="text" class="form-control" placeholder="width" />
+        </div>
+        <div class="col-md-1 d-flex">
+          <i class="ml-sm-1 m-auto fas fa-times"></i>
+        </div>
+        <div class="form-group col-md-2 col-3">
+          <label>height</label>
+          <input type="text" class="form-control" placeholder="height" />
+        </div>
+        <div class="form-group col-md-2 col-3">
+          <label>Unit</label>
+          <select class="form-control">
+            <option>cm</option>
+            <option>inch</option>
+            <option>width</option>
+            <option>height</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="d-flex flex-wrap">
+        <div class="form-group col-6">
+          <label>Created on</label>
+          <input type="date" class="form-control" placeholder="created on" />
+        </div>
+        <div class="form-group col-6">
+          <label>Medium</label>
+          <select class="form-control">
+            <option>water color</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group col-12">
+        <label>Description</label>
+        <textarea
+          class="form-control"
+          id="exampleFormControlTextarea1"
+          rows="3"
+        ></textarea>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="closeForm()">
+    Cancel
+  </button>
+  <button type="button" class="btn btn-common" (click)="saveForm()" disabled>
+    Save
+  </button>
+</div>

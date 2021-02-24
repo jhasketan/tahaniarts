@@ -1,83 +1,58 @@
 <div class="d-flex px-2 justify-content-end mb-3">
-    <button type="button" class="btn btn-common" (click)="openModal()">Add</button>
-    <!-- <button type="button" class="btn btn-sm btn-danger text-white "><i class="fas fa-trash"></i></button> -->
+  <button type="button" class="btn btn-common" routerLink="../add">
+    Add
+  </button>
+  <!-- <button type="button" class="btn btn-sm btn-danger text-white "><i class="fas fa-trash"></i></button> -->
 </div>
-<div class="col-12 p-0 d-flex flex-wrap justify-content-around justify-content-sm-between">
- 
-    <div class="card mb-3 px-0 mr-xl-2 col-12 col-sm-6 col-md-3 col-xl-3">
-        <div  class="card-link img-content">
-          <img src="../../../../../assets/images/bg4.jpg" class="card-img-top" alt="...">
-          <button type="button" class="btn btn-default px-0 btn-like"><i class="fas fa-heart"></i></button>
-         <!-- <button type="button" class="btn px-3 btn-details" (click)="openPaintingModal()">Quick review</button> -->
-          <button type="button" class="btn px-3 btn-details" (click)="openPaintingModal()">View details</button>
-        </div>
-          <div class="card-body px-2">
-              <div class="d-flex justify-content-between">
-              <h5 class="card-title mb-0">Painting name</h5>
-              <button type="button" class="btn btn-sm btn-default trash-painting"><i class="fas fa-trash"></i></button>
-              </div>
-              <p class="card-text"><small class="text-muted">by artist name</small></p>
-              <p class="card-text price font-italic"><span class="text-danger pr-1"><i class="fas fa-rupee-sign"></i> </span>120000</p>
-              <div class="d-flex flex-lg-row justify-content-between flex-column">
-              <button type="button" class="btn btn-default mb-2 text-uppercase btn-common">buy now</button>
-              <button type="button" class="btn btn-default mb-2 text-uppercase black-btn" routerLink="/add to cart">add to cart</button>
-             </div>
-        </div>
+<div
+  class="col-12 p-0 d-flex flex-wrap justify-content-around justify-content-sm-between"
+>
+  <div class="card mb-3 px-0 mr-xl-2 col-12 col-sm-6 col-md-3 col-xl-3" *ngFor="let painting of paintingList; let i=index;">
+    <div class="card-link img-content">
+      <img
+        [src]="painting?.data?.images?.front"
+        class="card-img-top"
+        alt="..."
+      />
+      <button type="button" class="btn btn-default px-0 btn-like">
+        <i class="fas fa-heart"></i>
+      </button>
+      <!-- <button type="button" class="btn px-3 btn-details" (click)="openPaintingModal()">Quick review</button> -->
+      <button
+        type="button"
+        class="btn px-3 btn-details"
+        (click)="openPaintingModal(painting)"
+      >
+        View details
+      </button>
     </div>
-
-    <div class="card mb-3 px-0 mr-xl-2 col-12 col-sm-6 col-md-3 col-xl-3">
-        <div  class="card-link img-content">
-          <img src="../../../../../assets/images/img1.jpeg" class="card-img-top" alt="...">
-          <button type="button" class="btn btn-default px-0 btn-like"><i class="fas fa-heart"></i></button>
-         <!-- <button type="button" class="btn px-3 btn-details" (click)="openPaintingModal()">Quick review</button> -->
-          <button type="button" class="btn px-3 btn-details" (click)="openPaintingModal()">View details</button>
-        </div>
-          <div class="card-body px-2">
-              <div class="d-flex justify-content-between">
-              <h5 class="card-title mb-0">Painting name</h5>
-              <button type="button" class="btn btn-sm btn-default trash-painting"><i class="fas fa-trash"></i></button>
-              </div>
-              <p class="card-text"><small class="text-muted">by artist name</small></p>
-              <p class="card-text price font-italic"><span class="text-danger pr-1"><i class="fas fa-rupee-sign"></i> </span>120000</p>
-              <div class="d-flex flex-lg-row justify-content-between flex-column">
-              
-              <button type="button" class="btn btn-default mb-2 text-uppercase btn-common">buy now</button>
-              <button type="button" class="btn btn-default mb-2 text-uppercase black-btn" routerLink="/add to cart">add to cart</button>
-             </div>
-        </div>
+    <div class="card-body px-2">
+      <div class="d-flex justify-content-between">
+        <h5 class="card-title mb-0 text-uppercase">{{painting?.data?.name}}</h5>
+        <button type="button" class="btn btn-sm btn-default trash-painting">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+      <p class="card-text"><small class="text-muted">by {{painting?.data?.artist}}</small></p>
+      <p class="card-text price font-italic">
+        <span class="text-danger pr-1"><i class="fas fa-rupee-sign"></i> </span
+        >{{painting?.data?.price?.value}}
+      </p>
+      <div class="d-flex flex-lg-row justify-content-between flex-column">
+        <button
+          type="button"
+          class="btn btn-default mb-2 text-uppercase btn-common"
+        >
+          buy now
+        </button>
+        <button
+          type="button"
+          class="btn btn-default mb-2 text-uppercase black-btn"
+          routerLink="/order/cart"
+        >
+          add to cart
+        </button>
+      </div>
     </div>
-
-
-  <div class="card mb-3 px-0 mr-xl-2 col-12 col-sm-6 col-md-3 col-xl-3">
-    <div  class="card-link img-content">
-      <img src="../../../../../assets/images/bg3.jpg" class="card-img-top" alt="...">
-      <button type="button" class="btn btn-default px-0 btn-like"><i class="fas fa-heart"></i></button>
-     <!-- <button type="button" class="btn px-3 btn-details" (click)="openPaintingModal()">Quick review</button> -->
-      <button type="button" class="btn px-3 btn-details" (click)="openPaintingModal()">View details</button>
-    </div>
-      <div class="card-body px-2">
-          <div class="d-flex justify-content-between">
-          <h5 class="card-title mb-0">Painting name</h5>
-          <button type="button" class="btn btn-sm btn-default trash-painting"><i class="fas fa-trash"></i></button>
-          </div>
-          <p class="card-text"><small class="text-muted">by artist name</small></p>
-          <p class="card-text price font-italic"><span class="text-danger pr-1"> <i class="fas fa-rupee-sign"></i> </span>120000</p>
-          <div class="d-flex flex-lg-row justify-content-between flex-column">
-          
-          <button type="button" class="btn btn-default mb-2 text-uppercase btn-common">buy now</button>
-          <button type="button" class="btn btn-default mb-2 text-uppercase black-btn" routerLink="/add to cart">add to cart</button>
-         </div>
-    </div>
-</div>
-
   </div>
-  
-
-
-  
-
-
- 
-     
-
-  
+</div>

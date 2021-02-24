@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
     
   }
   logout(){
+    debugger;
     this.authService.SignOut();
   }
-
 }
