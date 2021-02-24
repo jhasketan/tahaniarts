@@ -7,9 +7,6 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { SettingsComponent } from './core/settings/settings.component';
 import { HomeComponent } from './features/home/home.component';
-import { AddToCartComponent } from './features/painting/components/add-to-cart/add-to-cart.component';
-import { LikeCartComponent } from './features/painting/components/like-cart/like-cart.component';
-import { ProceedToCheckoutComponent } from './features/painting/components/proceed-to-checkout/proceed-to-checkout.component';
 
 const routes: Routes = [
   {
@@ -29,6 +26,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path:'order',
+    loadChildren: () =>
+    import("./features/order/order.module").then(m => m.OrderModule),
+  },
+  {
     path: 'settings',
     component: SettingsComponent,
     canActivate: [AuthGuard],
@@ -44,18 +46,6 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent
-  },
-  {
-   path:'add to cart',
-   component:AddToCartComponent
-  },
-  {
-   path:'like',
-   component:LikeCartComponent
-  },
-  {
-    path:'proceed to checkout',
-    component:ProceedToCheckoutComponent
   },
   {
     path: '**',
