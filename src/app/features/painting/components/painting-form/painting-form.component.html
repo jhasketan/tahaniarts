@@ -17,13 +17,29 @@
         <input type="text" class="form-control" placeholder="Painting name" name="painting" [(ngModel)]="painting.name"/>
       </div>
       <div class="form-group col-12">
-        <label for="name">Upload Painting</label>
+        <label for="name">Painting Cover</label>
         <div class="custom-file">
-          <input type="file" class="custom-file-input" id="customFile" />
+          <input type="file" class="custom-file-input"/>
           <label class="custom-file-label" for="customFile">Choose file</label>
         </div>
       </div>
-
+      <div class="form-group">
+      <label for="name">Slide images</label>
+      <button type="button" class="btn mb-2" (click)="addSlide()"><i class="fas fa-plus"></i></button> 
+    </div>
+      <div class="form-group" *ngFor="let slide of slides; let i = index">
+       
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" multiple />
+          <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+        <div class="col-12 d-flex justify-content-end" > 
+          <button type="button" class="btn mb-2" (click)="removeSlide(i)" *ngIf="i"><i class="fas fa-times"></i></button> 
+        </div>
+      
+      
+    </div>
+   
       <div class="d-flex flex-wrap">
         <div class="form-group col-6">
           <label>Artist name</label>

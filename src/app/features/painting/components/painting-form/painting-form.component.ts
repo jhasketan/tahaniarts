@@ -1,10 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { ToastrService } from 'ngx-toastr';
-import { MainService } from 'src/app/main.service';
-import { Painting } from '../../models/painting.interface';
-import { PaintingService } from '../../painting.service';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  ActivatedRoute,
+  Router
+} from '@angular/router';
+import {
+  BsModalService
+} from 'ngx-bootstrap/modal';
+import {
+  ToastrService
+} from 'ngx-toastr';
+import {
+  MainService
+} from 'src/app/main.service';
+import {
+  Painting
+} from '../../models/painting.interface';
+import {
+  PaintingService
+} from '../../painting.service';
 
 @Component({
   selector: 'app-painting-form',
@@ -14,18 +30,18 @@ import { PaintingService } from '../../painting.service';
 export class PaintingFormComponent implements OnInit {
   painting: Painting | any;
   id: string = '';
-  masterData:any = {
-    painting_type:[],
-    painting_material:[],
-    painting_medium:[]
+  masterData: any = {
+    painting_type: [],
+    painting_material: [],
+    painting_medium: []
   }
-
+  slides: any[] = [''];
   constructor(
     private paintingService: PaintingService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private toaster: ToastrService,
-    private mainService:MainService
+    private mainService: MainService
   ) {
     this.painting = this.emptyPainting;
   }
@@ -38,9 +54,19 @@ export class PaintingFormComponent implements OnInit {
       this.getPaintingById(res.id);
     });
   }
+  addSlide() {
+    if(this.slides.length<5){
+      this.slides.push('');
+    }
+  }
+  removeSlide(index: number) {
+    if(this.slides.length>1){
+      this.slides.splice(index, 1);
+    }
+  }
 
-  getMasterData(){
-    for(let key in this.masterData){
+  getMasterData() {
+    for (let key in this.masterData) {
       this.masterData[key] = this.mainService.filterMasterDataByType(key);
     }
     console.log('masterData', this.masterData);
@@ -51,13 +77,23 @@ export class PaintingFormComponent implements OnInit {
       artist: '',
       createdOn: '',
       description: '',
-      images: { front: '', rest: [] },
+      images: {
+        front: '',
+        rest: []
+      },
       lastUpdatedOn: '',
       material: '',
       medium: '',
       name: '',
-      price: { unit: '', value: 0 },
-      size: { height: 0, width: 0, unit: '' },
+      price: {
+        unit: '',
+        value: 0
+      },
+      size: {
+        height: 0,
+        width: 0,
+        unit: ''
+      },
       type: '',
       updatedBy: '',
     };
