@@ -1,57 +1,106 @@
-<div class="d-flex px-2 justify-content-end mb-3">
-  <button type="button" class="btn btn-common" routerLink="../add">
-    Add
-  </button>
+<div class="row justify-content-end mb-3 mx-2">
+  <button type="button" class="btn btn-common" routerLink="../add">Add</button>
   <!-- <button type="button" class="btn btn-sm btn-danger text-white "><i class="fas fa-trash"></i></button> -->
 </div>
-<div
-  class="col-12 p-0 d-flex flex-wrap justify-content-around justify-content-sm-between"
->
-  <div class="card mb-3 px-0 mr-xl-2 col-12 col-sm-6 col-md-3 col-xl-3" *ngFor="let painting of paintingList; let i=index;">
-    <div class="card-link img-content">
+<div class="row">
+  <div
+    class="col-sm-6 col-md-4 col-xl-3 col-xs-12"
+    *ngFor="let painting of paintingList; let i = index"
+  >
+    <!-- <div class="card" style="width: 100%">
       <img
         [src]="painting?.data?.images?.front"
         class="card-img-top"
         alt="..."
       />
-      <button type="button" class="btn btn-default px-0 btn-like">
-        <i class="fas fa-heart"></i>
-      </button>
-      <!-- <button type="button" class="btn px-3 btn-details" (click)="openPaintingModal()">Quick review</button> -->
-      <button
-        type="button"
-        class="btn px-3 btn-details"
-        (click)="openPaintingModal(painting)"
-      >
-        View details
-      </button>
-    </div>
-    <div class="card-body px-2">
-      <div class="d-flex justify-content-between">
-        <h5 class="card-title mb-0 text-uppercase">{{painting?.data?.name}}</h5>
-        <button type="button" class="btn btn-sm btn-default trash-painting">
-          <i class="fas fa-trash"></i>
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ painting?.data?.name }}
+          <button type="button" class="btn btn-sm btn-default trash-painting">
+            <i class="fas fa-trash"></i>
+          </button>
+        </h5>
+
+        <p class="card-text">
+          <small class="text-muted">by {{ painting?.data?.artist }}</small>
+        </p>
+        <p class="card-text price font-italic">
+          <span class="text-danger pr-1"
+            ><i class="fas fa-rupee-sign"></i> </span
+          >{{ painting?.data?.price?.value }}
+        </p>
+        <div class="row mb-2">
+          <div class="col-6 text-left">
+            <button
+            type="button"
+            class="btn btn-success"
+          >
+            buy now
+          </button>
+          </div>
+          <div class="col-6 text-right">
+            <button
+            type="button"
+            class="btn btn-info text-uppercase fs-10"
+            routerLink="/order/cart"
+          ><i class="fas fa-cart-arrow-down"></i>
+            add to cart
+          </button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="card">
+      <div class="card-link img-content">
+        <img
+          [src]="painting?.data?.images?.front"
+          class="card-img-top"
+          alt="..."
+        />
+        <button type="button" class="btn btn-default px-0 btn-like">
+          <i class="fas fa-heart"></i>
+        </button>
+        <button type="button" class="btn px-3 btn-details" (click)="openPaintingModal()">Quick review</button>
+        <button
+          type="button"
+          class="btn px-3 btn-details"
+          (click)="openPaintingModal(painting)"
+        >
+          View details
         </button>
       </div>
-      <p class="card-text"><small class="text-muted">by {{painting?.data?.artist}}</small></p>
-      <p class="card-text price font-italic">
-        <span class="text-danger pr-1"><i class="fas fa-rupee-sign"></i> </span
-        >{{painting?.data?.price?.value}}
-      </p>
-      <div class="d-flex flex-lg-row justify-content-between flex-column">
-        <button
-          type="button"
-          class="btn btn-default mb-2 text-uppercase btn-common"
-        >
-          buy now
-        </button>
-        <button
-          type="button"
-          class="btn btn-default mb-2 text-uppercase black-btn"
-          routerLink="/order/cart"
-        >
-          add to cart
-        </button>
+      <div class="card-body px-2">
+        <div class="d-flex justify-content-between">
+          <h5 class="card-title mb-0 text-uppercase">
+            {{ painting?.data?.name }}
+          </h5>
+          <button type="button" class="btn btn-sm btn-default trash-painting">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+        <p class="card-text">
+          <small class="text-muted">by {{ painting?.data?.artist }}</small>
+        </p>
+        <p class="card-text price font-italic">
+          <span class="text-danger pr-1"
+            ><i class="fas fa-rupee-sign"></i> </span
+          >{{ painting?.data?.price?.value }}
+        </p>
+        <div class="d-flex flex-lg-row justify-content-between flex-column">
+          <button
+            type="button"
+            class="btn btn-default mb-2 text-uppercase btn-common"
+          >
+            buy now
+          </button>
+          <button
+            type="button"
+            class="btn btn-default mb-2 text-uppercase black-btn"
+            routerLink="/order/cart"
+          >
+            add to cart
+          </button>
+        </div>
       </div>
     </div>
   </div>

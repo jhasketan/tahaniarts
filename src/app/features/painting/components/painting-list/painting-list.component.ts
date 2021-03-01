@@ -33,6 +33,10 @@ export class PaintingListComponent implements OnInit {
           id: each.payload.doc.id,
           data: each.payload.doc.data(),
         });
+        this.paintingList.push({
+          id: each.payload.doc.id,
+          data: each.payload.doc.data(),
+        });
       });
       console.log('<--painting list-->', this.paintingList);
     })
@@ -46,7 +50,7 @@ export class PaintingListComponent implements OnInit {
     modalRef.content.closeBtnName = 'Close';
   }
 
-  openPaintingModal(painting : any) {
+  openPaintingModal(painting? : any) {
     const modalRef: BsModalRef = this.modalService.show(
       PaintingReviewComponent,
       { class: 'modal-lg' }

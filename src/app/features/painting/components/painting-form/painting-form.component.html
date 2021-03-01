@@ -14,7 +14,7 @@
     <form>
       <div class="form-group col-12">
         <label for="name">Name</label>
-        <input type="text" class="form-control" placeholder="Painting name" />
+        <input type="text" class="form-control" placeholder="Painting name" name="painting" [(ngModel)]="painting.name"/>
       </div>
       <div class="form-group col-12">
         <label for="name">Upload Painting</label>
@@ -27,7 +27,7 @@
       <div class="d-flex flex-wrap">
         <div class="form-group col-6">
           <label>Artist name</label>
-          <input type="text" class="form-control" placeholder="Artist name" />
+          <input type="text" class="form-control" placeholder="Artist name" name="artist" [(ngModel)]="painting.artist"/>
         </div>
         <div class="form-group col-6">
           <label>Price</label>

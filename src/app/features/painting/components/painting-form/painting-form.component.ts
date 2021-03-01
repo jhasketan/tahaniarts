@@ -25,7 +25,7 @@ export class PaintingFormComponent implements OnInit {
   getPaintingById(id:string){
     this.paintingService.getById(id).subscribe(res=>{
       console.log('--painting--', res);
-      // this.painting = res;
+      this.painting = res;
     })
   }
 
