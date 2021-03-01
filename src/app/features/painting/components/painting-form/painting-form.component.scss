@@ -2,6 +2,7 @@ form{
     label{
         font-size: 12px;
         font-family: 'Poppins';
+        font-weight:bold;
     }
     input{
         font-size: 12px;
@@ -9,7 +10,10 @@ form{
     }
     select{
         font-size: 12px;
-        font-family: 'Poppins';   
+        font-family: 'Poppins'; 
+        option{
+            text-transform: capitalize;
+        }  
     }
 }
 .modal-title{

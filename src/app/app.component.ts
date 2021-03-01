@@ -17,8 +17,9 @@ export class AppComponent implements OnInit{
   }
 
   getMaster(){
-    this.service.getMaster().subscribe(res=>{
-      console.log('masterData-->',res);
-    })
+    this.service.getMaster();
+    // .subscribe(res=>{
+    //   console.log('masterData-->',res);
+    // })
   }
 }
