@@ -1,31 +1,13 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
-import {
-  ActivatedRoute,
-  Router
-} from '@angular/router';
-import {
-  BsModalService
-} from 'ngx-bootstrap/modal';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
-import {
-  ToastrService
-} from 'ngx-toastr';
-import {
-  MainService
-} from 'src/app/main.service';
+import { ToastrService } from 'ngx-toastr';
+import { MainService } from 'src/app/main.service';
 import { SharedService } from 'src/app/shared/shared.service';
-import {
-  Painting
-} from '../../models/painting.interface';
-import {
-  PaintingService
-} from '../../painting.service';
+import { Painting } from '../../models/painting.interface';
+import { PaintingService } from '../../painting.service';
 
 @Component({
   selector: 'app-painting-form',
@@ -38,11 +20,11 @@ export class PaintingFormComponent implements OnInit {
   masterData: any = {
     painting_type: [],
     painting_material: [],
-    painting_medium: []
-  }
-  imageURLGenerated: string ='';
-  sliderImageURLGenerated: {index:number;url:string;}[] =[];
-  submitted:boolean = true;
+    painting_medium: [],
+  };
+  imageURLGenerated: string = '';
+  sliderImageURLGenerated: { index: number; url: string }[] = [];
+  submitted: boolean = true;
   // @ViewChild('paintingForm') form :NgForm;
   constructor(
     private paintingService: PaintingService,
@@ -51,7 +33,7 @@ export class PaintingFormComponent implements OnInit {
     private toaster: ToastrService,
     private mainService: MainService,
     private sharedService: SharedService,
-    private loader:NgxSpinnerService
+    private loader: NgxSpinnerService
   ) {
     this.painting = this.emptyPainting;
   }
@@ -65,12 +47,12 @@ export class PaintingFormComponent implements OnInit {
     });
   }
   addSlide() {
-    if(this.painting.images.rest.length<5){
+    if (this.painting.images.rest.length < 5) {
       this.painting.images.rest.push('');
     }
   }
   removeSlide(index: number) {
-    if(this.painting.images.rest.length>1){
+    if (this.painting.images.rest.length > 1) {
       this.painting.images.rest.splice(index, 1);
     }
   }
@@ -89,7 +71,7 @@ export class PaintingFormComponent implements OnInit {
       description: '',
       images: {
         front: '',
-        rest: ['']
+        rest: [''],
       },
       lastUpdatedOn: '',
       material: '',
@@ -97,12 +79,12 @@ export class PaintingFormComponent implements OnInit {
       name: '',
       price: {
         unit: '',
-        value: undefined
+        value: undefined,
       },
       size: {
         height: undefined,
         width: undefined,
-        unit: ''
+        unit: '',
       },
       type: '',
       updatedBy: '',
@@ -120,48 +102,58 @@ export class PaintingFormComponent implements OnInit {
     });
   }
 
-  saveForm(form :any) {
+  saveForm(form: any) {
     console.log('form valid--', form.form.valid);
     console.log('form dirty--', form.form.dirty);
     this.submitted = true;
-    if(form.form.dirty){
-      if(form.form.valid){
+    if (form.form.dirty) {
+      if (form.form.valid) {
+        this.loader.show();
         console.log('form values--', this.painting);
-      }
-      else{
+        if (this.id) {
+          this.paintingService
+            .update(this.payload, this.id)
+            .then((res) => {
+              this.toaster.success('Painting Updated Successfully');
+              this.closeForm();
+            })
+            .catch((err) => {
+              this.toaster.error('Error While Updating Painting');
+              this.closeForm();
+            });
+        } else {
+          this.paintingService
+            .add(this.payload)
+            .then((res) => {
+              this.toaster.success('Painting Added Successfully');
+              this.closeForm();
+            })
+            .catch((err) => {
+              this.toaster.error('Error While Adding Painting');
+              this.closeForm();
+            });
+        }
+      } else {
         this.toaster.error('Please fill all the mandatory fields to proceed');
       }
-    }
-    else{
+    } else {
       this.toaster.warning('Nothing to save');
     }
-    // debugger;
-    // if (this.id) {
-    //   this.paintingService
-    //     .update(this.painting, this.id)
-    //     .then((res) => {
-    //       this.toaster.success('Painting Updated Successfully');
-    //       this.closeForm();
-    //     })
-    //     .catch((err) => {
-    //       this.toaster.error('Error While Updating Painting');
-    //       this.closeForm();
-    //     });
-    // } else {
-    //   this.paintingService
-    //     .add(this.painting)
-    //     .then((res) => {
-    //       this.toaster.success('Painting Added Successfully');
-    //       this.closeForm();
-    //     })
-    //     .catch((err) => {
-    //       this.toaster.error('Error While Adding Painting');
-    //       this.closeForm();
-    //     });
-    // }
+  }
+
+  get payload() {
+    const payload: Painting = JSON.parse(JSON.stringify(this.painting));
+    if (this.id) {
+      payload.lastUpdatedOn = new Date();
+      payload.updatedBy = localStorage.getItem('emailId');
+    } else {
+      payload.createdOn = new Date();
+    }
+    return payload;
   }
 
   closeForm() {
+    this.loader.hide();
     this.router.navigate(['painting/list']);
   }
 
@@ -176,52 +168,59 @@ export class PaintingFormComponent implements OnInit {
   uploadImage(event: any) {
     this.loader.show();
     this.triggerUploadFileInService(event)
-      .then((res:any) => {
+      .then((res: any) => {
         console.log('--uploaded--', res);
         this.imageURLGenerated = res;
-        this.painting.images.front = res;//this.removeParam('token', res);
+        this.painting.images.front = res; //this.removeParam('token', res);
         console.log(this.painting.images.front);
         this.loader.hide();
         this.toaster.success('File uploaded successfully');
       })
-      .catch((err:any) => {
+      .catch((err: any) => {
         console.log('--err--', err);
         this.loader.hide();
         this.toaster.error('Error while uploading file');
       });
   }
 
-  uploadSliderImage(event :any, index:number){
+  uploadSliderImage(event: any, index: number) {
+    this.loader.show();
     this.triggerUploadFileInService(event)
-      .then((res:any) => {
+      .then((res: any) => {
         console.log('--uploaded--', res);
-        if(this.sliderImageURLGenerated && this.sliderImageURLGenerated.length){
-          this.sliderImageURLGenerated.push({index,url:res});
+        if (
+          this.sliderImageURLGenerated &&
+          this.sliderImageURLGenerated.length
+        ) {
+          this.sliderImageURLGenerated.push({ index, url: res });
+        } else {
+          this.sliderImageURLGenerated = [{ index, url: res }];
         }
-        else{
-          this.sliderImageURLGenerated = [{index,url:res}];
-        }
-        this.painting.images.rest[index] = res;//this.removeParam('token', res);
+        this.painting.images.rest[index] = res; //this.removeParam('token', res);
         console.log(this.painting.images.rest[index]);
+        this.loader.hide();
         this.toaster.success('File uploaded successfully');
       })
-      .catch((err:any) => {
+      .catch((err: any) => {
         console.log('--err--', err);
+        this.loader.hide();
         this.toaster.error('Error while uploading file');
       });
   }
-  deleteFile(path:string, slideIndex?:number){
-    this.sharedService.deleteFile(path).subscribe(res=>{
-      if(slideIndex){
-        this.painting.images.rest[slideIndex-1] =''; 
+  deleteFile(path: string, slideIndex?: number) {
+    this.sharedService.deleteFile(path).subscribe(
+      (res) => {
+        if (slideIndex) {
+          this.painting.images.rest[slideIndex - 1] = '';
+        } else {
+          this.painting.images.front = '';
+        }
+        this.toaster.success('File deleted successfully');
+      },
+      (err) => {
+        this.toaster.error('Error while deleting file');
+        console.error('File delete error', err);
       }
-      else{
-        this.painting.images.front='';
-      }
-      this.toaster.success('File deleted successfully');
-    },err=>{
-      this.toaster.error('Error while deleting file');
-      console.error('File delete error',err);
-    });
+    );
   }
 }

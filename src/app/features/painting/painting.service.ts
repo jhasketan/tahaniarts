@@ -25,4 +25,8 @@ export class PaintingService {
   update(data : any, id : string ){
     return this.paintingCollection.doc(id).update(data);
   }
+
+  delete(id :string){
+    return this.paintingCollection.doc(id).delete();
+  }
 }

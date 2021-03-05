@@ -33,7 +33,7 @@
           <input
             type="file"
             class="custom-file-input"
-            (change)="uploadImage($event)"
+            (change)="uploadImage($event);paintingForm.form.markAsDirty();"
             name="cover"
           />
           <label class="custom-file-label" for="customFile">Choose file</label>
@@ -78,7 +78,7 @@
             <input
               type="file"
               class="custom-file-input"
-              (change)="uploadSliderImage($event, i)"
+              (change)="uploadSliderImage($event, i); paintingForm.form.markAsDirty();"
             />
             <label for="customFile" class="custom-file-label"
               >Choose file</label
@@ -96,6 +96,7 @@
           </span>
         </div>
         <div *ngIf="slide">
+          <label>{{ i + 1 }}. </label>
           <img
             [src]="slide"
             alt="slide image"
@@ -119,7 +120,10 @@
             required
             #artist="ngModel"
           />
-          <div *ngIf="artist.invalid && submitted" class="invalid-feedback show">
+          <div
+            *ngIf="artist.invalid && submitted"
+            class="invalid-feedback show"
+          >
             <div *ngIf="artist?.errors?.required">Artist Name is required.</div>
           </div>
         </div>
@@ -255,7 +259,10 @@
             required
             #height="ngModel"
           />
-          <div *ngIf="height.invalid && submitted" class="invalid-feedback show">
+          <div
+            *ngIf="height.invalid && submitted"
+            class="invalid-feedback show"
+          >
             <div *ngIf="height?.errors?.required">Height is required.</div>
           </div>
         </div>
@@ -284,7 +291,7 @@
       </div>
 
       <div class="d-flex flex-wrap">
-        <div class="form-group col-6">
+        <!-- <div class="form-group col-6">
           <label>Created on</label>
           <input
             type="date"
@@ -294,7 +301,7 @@
             name="createdOn"
             [(ngModel)]="painting.createdOn"
           />
-        </div>
+        </div> -->
         <div class="form-group col-6">
           <label>Medium</label>
           <select
@@ -334,13 +341,13 @@
           #description="ngModel"
         ></textarea>
         <div
-            *ngIf="description.invalid && submitted"
-            class="invalid-feedback show"
-          >
-            <div *ngIf="description?.errors?.required">
-              Description is required.
-            </div>
+          *ngIf="description.invalid && submitted"
+          class="invalid-feedback show"
+        >
+          <div *ngIf="description?.errors?.required">
+            Description is required.
           </div>
+        </div>
       </div>
     </form>
   </div>

@@ -15,7 +15,7 @@
             <div class="card-body">
               <h5 class="card-title">{{painting?.data?.name}}</h5>
               <p class="card-text mb-0"><small class="text-muted"><span class="fw-500">By:</span>{{painting?.data?.artist}}</small></p>
-              <p class="card-text"><small class="text-muted"><span class="fw-500">Added On:</span>{{painting?.data?.createdOn?.toDate() | date}}</small></p>
+              <p class="card-text"><small class="text-muted"><span class="fw-500">Added On:</span>{{painting?.data?.createdOn | date}}</small></p>
               <p class="card-text"><span>Size: </span>{{painting?.data?.size?.height}}H X {{painting?.data?.size?.width}}W {{painting?.data?.size?.unit}}</p>
               <p class="card-text"><span class="fw-500">Material:</span>{{painting?.data?.material}}</p>
               <p class="card-text"><span class="fw-500">Medium:</span>{{painting?.data?.medium}}</p>

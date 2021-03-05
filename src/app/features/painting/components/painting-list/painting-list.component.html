@@ -74,7 +74,7 @@
           <h5 class="card-title mb-0 text-uppercase">
             {{ painting?.data?.name }}
           </h5>
-          <button type="button" class="btn btn-sm btn-default trash-painting">
+          <button type="button" class="btn btn-sm btn-default trash-painting" (click)="deletePainting(painting.id)">
             <i class="fas fa-trash"></i>
           </button>
         </div>
