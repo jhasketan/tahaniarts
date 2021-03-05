@@ -6,18 +6,23 @@
 </div>
 <div class="modal-body">
   <div class="p-0 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <form>
+    <form  #paintingForm="ngForm">
       <div class="form-group col-12">
         <label for="name">Name</label>
         <input type="text" class="form-control" placeholder="Painting name" name="painting"
-          [(ngModel)]="painting.name" />
+          [(ngModel)]="painting.name" required/>
+
       </div>
       <div class="form-group col-12">
         <label for="name">Painting Cover</label>
         <div class="custom-file">
-          <input type="file" class="custom-file-input" />
+          <input type="file" class="custom-file-input" (change)="uploadImage($event)" name="cover"/>
           <label class="custom-file-label" for="customFile">Choose file</label>
         </div>
+      </div>
+      <div>
+        <img [src]="painting.images.front" alt="cover" style="width:100px;height:100px;"/>
+        <button (click)="deleteFile(painting.images.front);" type="button">Delete</button>
       </div>
 
       <div  class="form-group col-12">
@@ -32,16 +37,20 @@
       </div>
     </div>
 
-      <div class="form-group col-12" *ngFor="let slide of slides; let i = index">
+      <div class="form-group col-12" *ngFor="let slide of painting.images.rest; let i = index">
         <div class="input-group">
           <div class="custom-file mr-2">
-          <input type="file" class="custom-file-input" multiple />
+          <input type="file" class="custom-file-input" (change)="uploadSliderImage($event, i)"/>
           <label for="customFile" class="custom-file-label">Choose file</label></div>
           <span class="input-group-addon">
-            <button type="button" class="remove-btn btn mb-2" (click)="removeSlide(i)" *ngIf="slides.length>1">
+            <button type="button" class="remove-btn btn mb-2" (click)="removeSlide(i)" *ngIf="painting.images.rest.length>1">
               <i class="fas fa-times close-icon"></i>
             </button>
           </span>
+      </div>
+      <div>
+        <img [src]="slide" alt="slide image" style="width:100px;height:100px;"/>
+        <button (click)="deleteFile(slide, i+1);" type="button">Delete</button>
       </div>
       </div>
 
@@ -49,17 +58,17 @@
         <div class="form-group col-6">
           <label>Artist name</label>
           <input type="text" class="form-control" placeholder="Artist name" name="artist"
-            [(ngModel)]="painting.artist" />
+            [(ngModel)]="painting.artist" required/>
         </div>
 
         <div class="form-group col-6">
           <label>Price</label>
           <div class="input-group mb-3">
-            <input type="text" placeholder="price" name="priceValue" class="form-control price-input" aria-label="priceValue"
-              aria-describedby="basic-addon2">
+            <input type="number" placeholder="price" name="priceValue" class="form-control price-input" aria-label="priceValue"
+              aria-describedby="basic-addon2" required [(ngModel)]="painting.price.value">
             <div class="input-group-append">
               <span class="input-group-text" id="basic-addon2">
-                <select class="select-price">
+                <select class="select-price" required name="priceUnit" [(ngModel)]="painting.price.unit">
                   <option selected disabled readonly>choose</option>
                   <option value="INR">INR</option>
                   <option value="USD">USD</option>
@@ -77,7 +86,7 @@
       <div class="d-flex flex-wrap">
         <div class="form-group col-6">
           <label>Type</label>
-          <select class="form-control">
+          <select class="form-control" [(ngModel)]="painting.type" name="paintingType" required>
             <option selected disabled readonly>choose</option>
             <option *ngFor="let type of masterData.painting_type" [value]="type.id">
               {{ type?.name }}
@@ -86,7 +95,7 @@
         </div>
         <div class="form-group col-6">
           <label>Material</label>
-          <select class="form-control">
+          <select class="form-control" [(ngModel)]="painting.material" name="paintingMaterial" required>
             <option selected disabled readonly>choose</option>
             <option *ngFor="let material of masterData.painting_material" [value]="material.id">
               {{ material?.name }}
@@ -99,7 +108,7 @@
         <div class="form-group col-md-5 col-5 pr-0">
           <label>Width</label>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" aria-describedby="basic-addon3" placeholder="width" name="width" [(ngModel)]="painting.size.width" />
+            <input type="text" class="form-control" aria-describedby="basic-addon3" placeholder="width" name="width" [(ngModel)]="painting.size.width" required/>
             <div class="input-group-append">
               <span class="input-group-text multiple-sign" id="basic-addon3">
                 <i class="fas fa-times"></i>
@@ -111,14 +120,14 @@
         <div class="form-group col-md-4 col-4 pl-0">
           <label>Height</label>
           <input type="text" class="form-control" placeholder="height" name="height"
-            [(ngModel)]="painting.size.height" />
+            [(ngModel)]="painting.size.height" required/>
         </div>
         <div class="form-group col-md-3 col-3 pl-0">
           <label>Unit</label>
-          <select class="form-control">
+          <select class="form-control" [(ngModel)]="painting.size.unit" name="paintingSizeUnit" required>
             <option selected disabled readonly>choose</option>
-            <option>cm</option>
-            <option>inch</option>
+            <option value="cm">cm</option>
+            <option value="inch">inch</option>
           </select>
         </div>
       </div>
@@ -131,7 +140,7 @@
         </div>
         <div class="form-group col-6">
           <label>Medium</label>
-          <select class="form-control">
+          <select class="form-control" [(ngModel)]="painting.medium" name="paintingMedium" required>
             <option selected disabled readonly>choose</option>
             <option *ngFor="let medium of masterData.painting_medium" [value]="medium.id">
               {{ medium?.name }}
@@ -142,8 +151,16 @@
       <div class="form-group col-12">
         <label>Description</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"
-          [(ngModel)]="painting.description"></textarea>
+          [(ngModel)]="painting.description" required></textarea>
       </div>
+      <!-- <div class="form-group">
+        <button type="button" class="btn btn-secondary" (click)="closeForm()">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-common" (click)="saveForm(paintingForm)">
+          Save
+        </button>
+      </div> -->
     </form>
   </div>
 </div>
@@ -151,7 +168,7 @@
   <button type="button" class="btn btn-secondary" (click)="closeForm()">
     Cancel
   </button>
-  <button type="button" class="btn btn-common" (click)="saveForm()" disabled>
+ <button type="button" class="btn btn-common" (click)="saveForm(paintingForm)">
     Save
   </button>
 </div>

@@ -25,18 +25,18 @@ export class PaintingListComponent implements OnInit {
           id: each.payload.doc.id,
           data: each.payload.doc.data(),
         });
-        this.paintingList.push({
-          id: each.payload.doc.id,
-          data: each.payload.doc.data(),
-        });
-        this.paintingList.push({
-          id: each.payload.doc.id,
-          data: each.payload.doc.data(),
-        });
-        this.paintingList.push({
-          id: each.payload.doc.id,
-          data: each.payload.doc.data(),
-        });
+        // this.paintingList.push({
+        //   id: each.payload.doc.id,
+        //   data: each.payload.doc.data(),
+        // });
+        // this.paintingList.push({
+        //   id: each.payload.doc.id,
+        //   data: each.payload.doc.data(),
+        // });
+        // this.paintingList.push({
+        //   id: each.payload.doc.id,
+        //   data: each.payload.doc.data(),
+        // });
       });
       console.log('<--painting list-->', this.paintingList);
     })
