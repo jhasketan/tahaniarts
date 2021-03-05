@@ -12,6 +12,7 @@ import {
 import {
   BsModalService
 } from 'ngx-bootstrap/modal';
+import { NgxSpinnerService } from 'ngx-spinner';
 import {
   ToastrService
 } from 'ngx-toastr';
@@ -41,6 +42,7 @@ export class PaintingFormComponent implements OnInit {
   }
   imageURLGenerated: string ='';
   sliderImageURLGenerated: {index:number;url:string;}[] =[];
+  submitted:boolean = true;
   // @ViewChild('paintingForm') form :NgForm;
   constructor(
     private paintingService: PaintingService,
@@ -48,7 +50,8 @@ export class PaintingFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private toaster: ToastrService,
     private mainService: MainService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private loader:NgxSpinnerService
   ) {
     this.painting = this.emptyPainting;
   }
@@ -94,11 +97,11 @@ export class PaintingFormComponent implements OnInit {
       name: '',
       price: {
         unit: '',
-        value: 0
+        value: undefined
       },
       size: {
-        height: 0,
-        width: 0,
+        height: undefined,
+        width: undefined,
         unit: ''
       },
       type: '',
@@ -120,6 +123,7 @@ export class PaintingFormComponent implements OnInit {
   saveForm(form :any) {
     console.log('form valid--', form.form.valid);
     console.log('form dirty--', form.form.dirty);
+    this.submitted = true;
     if(form.form.dirty){
       if(form.form.valid){
         console.log('form values--', this.painting);
@@ -170,16 +174,19 @@ export class PaintingFormComponent implements OnInit {
   }
 
   uploadImage(event: any) {
+    this.loader.show();
     this.triggerUploadFileInService(event)
       .then((res:any) => {
         console.log('--uploaded--', res);
         this.imageURLGenerated = res;
         this.painting.images.front = res;//this.removeParam('token', res);
         console.log(this.painting.images.front);
+        this.loader.hide();
         this.toaster.success('File uploaded successfully');
       })
       .catch((err:any) => {
         console.log('--err--', err);
+        this.loader.hide();
         this.toaster.error('Error while uploading file');
       });
   }

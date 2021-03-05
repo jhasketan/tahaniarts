@@ -1,75 +1,153 @@
 <div class="modal-header">
   <h4 class="modal-title pull-left">Add Painting</h4>
-  <button type="button" class="close pull-right" aria-label="Close" (click)="closeForm()">
+  <button
+    type="button"
+    class="close pull-right"
+    aria-label="Close"
+    (click)="closeForm()"
+  >
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
   <div class="p-0 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <form  #paintingForm="ngForm">
+    <form #paintingForm="ngForm">
       <div class="form-group col-12">
         <label for="name">Name</label>
-        <input type="text" class="form-control" placeholder="Painting name" name="painting"
-          [(ngModel)]="painting.name" required/>
-
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Painting name"
+          name="painting"
+          [(ngModel)]="painting.name"
+          required
+          #name="ngModel"
+        />
+        <div *ngIf="name.invalid && submitted" class="invalid-feedback show">
+          <div *ngIf="name?.errors?.required">Name is required.</div>
+        </div>
       </div>
       <div class="form-group col-12">
         <label for="name">Painting Cover</label>
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" (change)="uploadImage($event)" name="cover"/>
+        <div class="custom-file" *ngIf="!painting?.images?.front">
+          <input
+            type="file"
+            class="custom-file-input"
+            (change)="uploadImage($event)"
+            name="cover"
+          />
           <label class="custom-file-label" for="customFile">Choose file</label>
         </div>
       </div>
-      <div>
-        <img [src]="painting.images.front" alt="cover" style="width:100px;height:100px;"/>
-        <button (click)="deleteFile(painting.images.front);" type="button">Delete</button>
+      <div *ngIf="painting?.images?.front">
+        <img
+          [src]="painting.images.front"
+          alt="cover"
+          style="width: 100px; height: 100px"
+        />
+        <button (click)="deleteFile(painting.images.front)" type="button">
+          Delete
+        </button>
       </div>
 
-      <div  class="form-group col-12">
+      <div class="form-group col-12">
         <div class="input-group">
-          <div class="add-image-content"><label for="name">Slide images</label>
-        </div>
-        <span class="input-group-addon">
-          <button type="button" class="add-btn btn mb-2" (click)="addSlide()" title="add image">
-            Add image
-          </button>
-        </span>
-      </div>
-    </div>
-
-      <div class="form-group col-12" *ngFor="let slide of painting.images.rest; let i = index">
-        <div class="input-group">
-          <div class="custom-file mr-2">
-          <input type="file" class="custom-file-input" (change)="uploadSliderImage($event, i)"/>
-          <label for="customFile" class="custom-file-label">Choose file</label></div>
+          <div class="add-image-content">
+            <label for="name">Slide images</label>
+          </div>
           <span class="input-group-addon">
-            <button type="button" class="remove-btn btn mb-2" (click)="removeSlide(i)" *ngIf="painting.images.rest.length>1">
+            <button
+              type="button"
+              class="add-btn btn mb-2"
+              (click)="addSlide()"
+              title="add image"
+            >
+              Add image
+            </button>
+          </span>
+        </div>
+      </div>
+
+      <div
+        class="form-group col-12"
+        *ngFor="let slide of painting.images.rest; let i = index"
+      >
+        <div class="input-group" *ngIf="!slide">
+          <label>{{ i + 1 }}. </label>
+          <div class="custom-file mr-2">
+            <input
+              type="file"
+              class="custom-file-input"
+              (change)="uploadSliderImage($event, i)"
+            />
+            <label for="customFile" class="custom-file-label"
+              >Choose file</label
+            >
+          </div>
+          <span class="input-group-addon">
+            <button
+              type="button"
+              class="remove-btn btn mb-2"
+              (click)="removeSlide(i)"
+              *ngIf="painting.images.rest.length > 1"
+            >
               <i class="fas fa-times close-icon"></i>
             </button>
           </span>
-      </div>
-      <div>
-        <img [src]="slide" alt="slide image" style="width:100px;height:100px;"/>
-        <button (click)="deleteFile(slide, i+1);" type="button">Delete</button>
-      </div>
+        </div>
+        <div *ngIf="slide">
+          <img
+            [src]="slide"
+            alt="slide image"
+            style="width: 100px; height: 100px"
+          />
+          <button (click)="deleteFile(slide, i + 1)" type="button">
+            Delete
+          </button>
+        </div>
       </div>
 
       <div class="d-flex flex-wrap">
         <div class="form-group col-6">
           <label>Artist name</label>
-          <input type="text" class="form-control" placeholder="Artist name" name="artist"
-            [(ngModel)]="painting.artist" required/>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Artist name"
+            name="artist"
+            [(ngModel)]="painting.artist"
+            required
+            #artist="ngModel"
+          />
+          <div *ngIf="artist.invalid && submitted" class="invalid-feedback show">
+            <div *ngIf="artist?.errors?.required">Artist Name is required.</div>
+          </div>
         </div>
 
         <div class="form-group col-6">
           <label>Price</label>
-          <div class="input-group mb-3">
-            <input type="number" placeholder="price" name="priceValue" class="form-control price-input" aria-label="priceValue"
-              aria-describedby="basic-addon2" required [(ngModel)]="painting.price.value">
+          <div class="input-group">
+            <input
+              type="number"
+              placeholder="price"
+              name="priceValue"
+              class="form-control price-input"
+              aria-label="priceValue"
+              aria-describedby="basic-addon2"
+              required
+              [(ngModel)]="painting.price.value"
+              #priceValue="ngModel"
+            />
             <div class="input-group-append">
               <span class="input-group-text" id="basic-addon2">
-                <select class="select-price" required name="priceUnit" [(ngModel)]="painting.price.unit">
-                  <option selected disabled readonly>choose</option>
+                <select
+                  class="select-price"
+                  required
+                  name="priceUnit"
+                  [(ngModel)]="painting.price.unit"
+                  #priceUnit="ngModel"
+                >
+                  <option selected disabled readonly value="">choose</option>
                   <option value="INR">INR</option>
                   <option value="USD">USD</option>
                   <option value="GBP">GBP</option>
@@ -78,89 +156,192 @@
               </span>
             </div>
           </div>
-
+          <div
+            *ngIf="(priceValue.invalid || priceUnit.invalid) && submitted"
+            class="invalid-feedback show"
+          >
+            <div *ngIf="name?.errors?.required">Price & unit are required.</div>
+          </div>
         </div>
-
-
       </div>
       <div class="d-flex flex-wrap">
         <div class="form-group col-6">
           <label>Type</label>
-          <select class="form-control" [(ngModel)]="painting.type" name="paintingType" required>
-            <option selected disabled readonly>choose</option>
-            <option *ngFor="let type of masterData.painting_type" [value]="type.id">
+          <select
+            class="form-control"
+            [(ngModel)]="painting.type"
+            name="paintingType"
+            required
+            #paintingType="ngModel"
+          >
+            <option selected disabled readonly value="">choose</option>
+            <option
+              *ngFor="let type of masterData.painting_type"
+              [value]="type.id"
+            >
               {{ type?.name }}
             </option>
           </select>
+          <div
+            *ngIf="paintingType.invalid && submitted"
+            class="invalid-feedback show"
+          >
+            <div *ngIf="paintingType?.errors?.required">
+              Painting Type is required.
+            </div>
+          </div>
         </div>
         <div class="form-group col-6">
           <label>Material</label>
-          <select class="form-control" [(ngModel)]="painting.material" name="paintingMaterial" required>
-            <option selected disabled readonly>choose</option>
-            <option *ngFor="let material of masterData.painting_material" [value]="material.id">
+          <select
+            class="form-control"
+            [(ngModel)]="painting.material"
+            name="paintingMaterial"
+            required
+            #paintingMaterial="ngModel"
+          >
+            <option selected disabled readonly value="">choose</option>
+            <option
+              *ngFor="let material of masterData.painting_material"
+              [value]="material.id"
+            >
               {{ material?.name }}
             </option>
           </select>
+          <div
+            *ngIf="paintingMaterial.invalid && submitted"
+            class="invalid-feedback show"
+          >
+            <div *ngIf="paintingMaterial?.errors?.required">
+              Painting Material required.
+            </div>
+          </div>
         </div>
       </div>
       <label class="col-12">Size</label>
       <div class="d-flex">
         <div class="form-group col-md-5 col-5 pr-0">
           <label>Width</label>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" aria-describedby="basic-addon3" placeholder="width" name="width" [(ngModel)]="painting.size.width" required/>
+          <div class="input-group">
+            <input
+              type="number"
+              class="form-control"
+              aria-describedby="basic-addon3"
+              placeholder="width"
+              name="width"
+              [(ngModel)]="painting.size.width"
+              required
+              #width="ngModel"
+            />
             <div class="input-group-append">
               <span class="input-group-text multiple-sign" id="basic-addon3">
                 <i class="fas fa-times"></i>
               </span>
             </div>
-          </div> 
+          </div>
+          <div *ngIf="width.invalid && submitted" class="invalid-feedback show">
+            <div *ngIf="width?.errors?.required">Width is required.</div>
+          </div>
         </div>
 
         <div class="form-group col-md-4 col-4 pl-0">
           <label>Height</label>
-          <input type="text" class="form-control" placeholder="height" name="height"
-            [(ngModel)]="painting.size.height" required/>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="height"
+            name="height"
+            [(ngModel)]="painting.size.height"
+            required
+            #height="ngModel"
+          />
+          <div *ngIf="height.invalid && submitted" class="invalid-feedback show">
+            <div *ngIf="height?.errors?.required">Height is required.</div>
+          </div>
         </div>
         <div class="form-group col-md-3 col-3 pl-0">
           <label>Unit</label>
-          <select class="form-control" [(ngModel)]="painting.size.unit" name="paintingSizeUnit" required>
-            <option selected disabled readonly>choose</option>
+          <select
+            class="form-control"
+            [(ngModel)]="painting.size.unit"
+            name="paintingSizeUnit"
+            required
+            #paintingSizeUnit="ngModel"
+          >
+            <option selected disabled readonly value="">choose</option>
             <option value="cm">cm</option>
             <option value="inch">inch</option>
           </select>
+          <div
+            *ngIf="paintingSizeUnit.invalid && submitted"
+            class="invalid-feedback show"
+          >
+            <div *ngIf="paintingSizeUnit?.errors?.required">
+              Unit is required.
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="d-flex flex-wrap">
         <div class="form-group col-6">
           <label>Created on</label>
-          <input type="date" class="form-control" placeholder="created on" disabled name="createdOn"
-            [(ngModel)]="painting.createdOn" />
+          <input
+            type="date"
+            class="form-control"
+            placeholder="created on"
+            disabled
+            name="createdOn"
+            [(ngModel)]="painting.createdOn"
+          />
         </div>
         <div class="form-group col-6">
           <label>Medium</label>
-          <select class="form-control" [(ngModel)]="painting.medium" name="paintingMedium" required>
-            <option selected disabled readonly>choose</option>
-            <option *ngFor="let medium of masterData.painting_medium" [value]="medium.id">
+          <select
+            class="form-control"
+            [(ngModel)]="painting.medium"
+            name="paintingMedium"
+            required
+            #medium="ngModel"
+          >
+            <option selected disabled readonly value="">choose</option>
+            <option
+              *ngFor="let medium of masterData.painting_medium"
+              [value]="medium.id"
+            >
               {{ medium?.name }}
             </option>
           </select>
+          <div
+            *ngIf="medium.invalid && submitted"
+            class="invalid-feedback show"
+          >
+            <div *ngIf="medium?.errors?.required">
+              Painting Medium is required.
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group col-12">
         <label>Description</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"
-          [(ngModel)]="painting.description" required></textarea>
+        <textarea
+          class="form-control"
+          id="exampleFormControlTextarea1"
+          rows="3"
+          name="description"
+          [(ngModel)]="painting.description"
+          required
+          #description="ngModel"
+        ></textarea>
+        <div
+            *ngIf="description.invalid && submitted"
+            class="invalid-feedback show"
+          >
+            <div *ngIf="description?.errors?.required">
+              Description is required.
+            </div>
+          </div>
       </div>
-      <!-- <div class="form-group">
-        <button type="button" class="btn btn-secondary" (click)="closeForm()">
-          Cancel
-        </button>
-        <button type="button" class="btn btn-common" (click)="saveForm(paintingForm)">
-          Save
-        </button>
-      </div> -->
     </form>
   </div>
 </div>
@@ -168,7 +349,7 @@
   <button type="button" class="btn btn-secondary" (click)="closeForm()">
     Cancel
   </button>
- <button type="button" class="btn btn-common" (click)="saveForm(paintingForm)">
+  <button type="button" class="btn btn-common" (click)="saveForm(paintingForm)">
     Save
   </button>
 </div>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -16,13 +16,13 @@ import { LoginComponent } from './core/authentication/components/login/login.com
 import { SignupComponent } from './core/authentication/components/signup/signup.component';
 import { ForgotPasswordComponent } from './core/authentication/components/forgot-password/forgot-password.component';
 import { ToastrModule } from 'ngx-toastr';
-import { NgHttpLoaderModule} from 'ng-http-loader';
 import { HomeComponent } from './features/home/home.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { SettingsComponent } from './core/settings/settings.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
+import { NgxSpinnerModule} from 'ngx-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,11 +48,12 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
       positionClass: "toast-top-right",
       preventDuplicates: false
     }),
-    NgHttpLoaderModule.forRoot(),
+    NgxSpinnerModule,
     ModalModule.forRoot(),
     TabsModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

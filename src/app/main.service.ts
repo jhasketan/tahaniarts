@@ -16,6 +16,7 @@ export class MainService {
   constructor(private firestore: AngularFirestore) {
     this.masterDataCollection = this.firestore.collection('masterData');
   }
+  
   getMaster() {
     this.masterDataCollection.valueChanges().subscribe((res) => {
       console.log('master data-->', res);

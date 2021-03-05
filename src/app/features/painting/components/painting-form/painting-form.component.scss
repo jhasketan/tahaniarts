@@ -1,7 +1,9 @@
-.ng-invalid.ng-touched:not(form) {
-  border-bottom: 2px solid red;
+// .ng-invalid:not(form) {
+//   border-bottom: 2px solid red;
+// }
+.show{
+    display: block;
 }
-
 form {
   label {
     font-size: 12px;
