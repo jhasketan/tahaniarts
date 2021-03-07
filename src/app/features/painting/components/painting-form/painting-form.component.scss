@@ -33,19 +33,31 @@ form {
     font-size: 12px;
     width: 100px;
   }
+.remove-input{
+  position: relative;
+  background:transparent;
+  
 
+  .close-icon {
+    position: absolute;
+    top: 0px;
+    right: 7px;
+    color:red;
+  }
+}
   .remove-btn {
     position: relative;
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     background: #ff0000;
 
     .close-icon {
       position: absolute;
-      top: 8px;
-      right: 9px;
+      top: 5px;
+      right: 7px;
       color: #fff;
+      font-size: 12px;
     }
   }
 

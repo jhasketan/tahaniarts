@@ -38,24 +38,30 @@
           />
           <label class="custom-file-label" for="customFile">Choose file</label>
         </div>
-      </div>
+      
       <div *ngIf="painting?.images?.front">
         <img
           [src]="painting.images.front"
           alt="cover"
           style="width: 100px; height: 100px"
+          class="mr-2"
         />
-        <button (click)="deleteFile(painting.images.front)" type="button">
-          Delete
-        </button>
+        
+        <button
+        type="button"
+        class="remove-btn btn mb-2 ml-2"
+        (click)="deleteFile(painting.images.front)"
+      >
+        <i class="fas fa-times close-icon"></i>
+      </button>
       </div>
-
+    </div>
       <div class="form-group col-12">
         <div class="input-group">
           <div class="add-image-content">
             <label for="name">Slide images</label>
           </div>
-          <span class="input-group-addon">
+          <span class="input-group-addon pl-2">
             <button
               type="button"
               class="add-btn btn mb-2"
@@ -73,8 +79,8 @@
         *ngFor="let slide of painting.images.rest; let i = index"
       >
         <div class="input-group" *ngIf="!slide">
-          <label>{{ i + 1 }}. </label>
-          <div class="custom-file mr-2">
+          <label class="pr-2 my-auto">{{ i + 1 }}. </label>
+          <div class="custom-file">
             <input
               type="file"
               class="custom-file-input"
@@ -87,29 +93,33 @@
           <span class="input-group-addon">
             <button
               type="button"
-              class="remove-btn btn mb-2"
+              class="remove-input btn my-2"
               (click)="removeSlide(i)"
               *ngIf="painting.images.rest.length > 1"
             >
-              <i class="fas fa-times close-icon"></i>
+              <i class="fas fa-minus close-icon"></i>
             </button>
           </span>
         </div>
         <div *ngIf="slide">
-          <label>{{ i + 1 }}. </label>
+          <label class="pr-2 my-auto">{{ i + 1 }}. </label>
           <img
             [src]="slide"
             alt="slide image"
             style="width: 100px; height: 100px"
+            class="mr-2"
           />
-          <button (click)="deleteFile(slide, i + 1)" type="button">
-            Delete
-          </button>
+          <button
+          class="remove-btn btn mb-2"
+          (click)="deleteFile(slide, i + 1)" type="button"
+        >
+          <i class="fas fa-times close-icon"></i>
+        </button>
         </div>
       </div>
 
       <div class="d-flex flex-wrap">
-        <div class="form-group col-6">
+        <div class="form-group col-12 col-md-6">
           <label>Artist name</label>
           <input
             type="text"
@@ -128,7 +138,7 @@
           </div>
         </div>
 
-        <div class="form-group col-6">
+        <div class="form-group col-12 col-md-6">
           <label>Price</label>
           <div class="input-group">
             <input
@@ -169,7 +179,7 @@
         </div>
       </div>
       <div class="d-flex flex-wrap">
-        <div class="form-group col-6">
+        <div class="form-group col-12 col-md-6">
           <label>Type</label>
           <select
             class="form-control"
@@ -195,7 +205,7 @@
             </div>
           </div>
         </div>
-        <div class="form-group col-6">
+        <div class="form-group col-12 col-md-6">
           <label>Material</label>
           <select
             class="form-control"
@@ -302,7 +312,7 @@
             [(ngModel)]="painting.createdOn"
           />
         </div> -->
-        <div class="form-group col-6">
+        <div class="form-group col-12 col-md-6">
           <label>Medium</label>
           <select
             class="form-control"
