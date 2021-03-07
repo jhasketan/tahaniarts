@@ -17,24 +17,24 @@
       <ul class="navbar-nav mr-auto" *ngIf="userLoggedIn; else NotLoggedIn">
         <li class="nav-item active">
           <a class="nav-link" routerLink="home"
-            ><span class="text-white"><i class="fas fa-home"></i></span> Home <span class="sr-only">(current)</span></a>
+            ><span><i class="fas fa-home pr-2"></i></span> Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="painting"><span class="text-white"><i class="fas fa-paint-brush pr-1"></i></span>Paintings</a>
+          <a class="nav-link" routerLink="painting"><span><i class="fas fa-paint-brush pr-2"></i></span>Paintings</a>
         </li>
       </ul>
 
      
       <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-              <a class="nav-link" routerLink="order/wishlist"><i class="fas fa-heart pr-1"></i>Wish list</a>
+              <a class="nav-link" routerLink="order/wishlist"><i class="fas fa-heart pr-2"></i>Wish list</a>
             </li>
         <li class="nav-item">
-           <a class="nav-link" routerLink="order/proceed-to-checkout"><i class="fas fa-shopping-cart pr-1"></i>Cart</a>
+           <a class="nav-link" routerLink="order/proceed-to-checkout"><i class="fas fa-shopping-cart pr-2"></i>Cart</a>
         </li>
         
           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle pr-1"></i><span class="text-white">Profile</span></a>
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle pr-1"></i><span>Profile</span></a>
               <div class="dropdown-menu dropdown-menu-right">
                   <a class="dropdown-item" routerLink="manage-user/my-profile">My Profile</a>
                 <a class="dropdown-item" routerLink="order/list">My Orders</a>
