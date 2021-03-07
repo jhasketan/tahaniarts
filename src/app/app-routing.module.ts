@@ -25,6 +25,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'query',
+    loadChildren: () =>
+      import("./features/query/query.module").then(m => m.QueryModule),
+    canActivate: [AuthGuard],
+  },
+  {
     path:'order',
     loadChildren: () =>
     import("./features/order/order.module").then(m => m.OrderModule),

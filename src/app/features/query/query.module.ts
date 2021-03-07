@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { QueryListComponent } from './components/query-list/query-list.component';
+import { QueryRoutingModule } from './query.routing';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [QueryListComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    QueryRoutingModule
   ]
 })
 export class QueryModule { }
