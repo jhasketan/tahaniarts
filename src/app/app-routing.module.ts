@@ -30,6 +30,11 @@ const routes: Routes = [
     import("./features/order/order.module").then(m => m.OrderModule),
   },
   {
+    path:'manage-user',
+    loadChildren: () =>
+    import("./features/manage-user/manage-user.module").then(m => m.ManageUserModule),
+  },
+  {
     path: 'settings',
     component: SettingsComponent,
     canActivate: [AuthGuard],
