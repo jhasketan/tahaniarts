@@ -6,6 +6,12 @@
         max-width:100%;
        }
     }
+
+    .select image{
+        border: 1px solid #ddd;
+        width: 60px;
+        height: 60px;  
+    }
     
     // icons img 
     .card-body{
@@ -41,6 +47,8 @@ position: absolute;
 right: 8px;
 top: 4px;
 }
+
+
 .btn-common{
     background:#538eb4;
     color:#fff;

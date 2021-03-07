@@ -1,26 +1,33 @@
-<div class="card mb-3 pb-3 col-12">
+<ng-container>
+  <div class="card mb-3 pb-3 col-12">
     <div class="d-flex flex-lg-row justify-content-end">
-    <button type="button" class="btn btn-default btn-trash"><i class="fas fa-trash"></i></button>
-    </div> 
+      <button type="button" class="btn btn-default btn-trash"><i class="fas fa-trash"></i></button>
+    </div>
     <div class="row no-gutters">
-          <div class="col-md-2 col-xl-2 col-6 img-add">
-            <img src="../../../../../assets/images/img1.jpeg" class="card-img p-3" alt="...">
+      <div class="col-md-2 col-xl-2 col-6 img-add">
+        <img src="../../../../../assets/images/img1.jpeg" class="card-img p-3" alt="...">
+      </div>
+      <div class="col-md-10 col-xl-10 col-6">
+        <div class="card-body d-flex flex-wrap">
+          <div class="col-12">
+            <h5 class="card-title mb-0">Painting name</h5>
+            <p class="card-text mb-0"><small class="text-muted">12000</small></p>
+            <p class="card-text"><small class="text-muted">description</small></p>
           </div>
-          <div class="col-md-10 col-xl-10 col-6">
-            <div class="card-body d-flex flex-wrap">
-              <div class="col-12">
-                  <h5 class="card-title mb-0">Painting name</h5>
-                  <p class="card-text mb-0"><small class="text-muted">12000</small></p>
-                  <p class="card-text"><small class="text-muted">description</small></p>
-              </div> 
-             </div>
         </div>
       </div>
-      
-      <div class="d-flex flex-lg-row justify-content-end flex-column">
-          <button type="button" class="btn btn-default mb-2 mr-lg-2 text-uppercase btn-common">Place order</button>
-          <button type="button" class="btn btn-default mb-2 text-uppercase black-btn" routerLink="/add to cart">Move to cart</button>
-      </div>
-      
-</div> 
+    </div>
 
+    <div class="d-flex flex-lg-row justify-content-end flex-column">
+      <button type="button" class="btn btn-default mb-2 mr-lg-2 text-uppercase btn-common">Place order</button>
+      <button type="button" class="btn btn-default mb-2 text-uppercase black-btn" routerLink="/add to cart">Move to
+        cart</button>
+    </div>
+
+  </div>
+</ng-container>
+
+<ng-container>
+  <p class="cart-empty">Your cart is currently empty.</p>
+  <button type="button" class="">Return to shop</button>
+</ng-container>

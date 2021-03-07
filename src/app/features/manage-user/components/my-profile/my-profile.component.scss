@@ -1,0 +1,33 @@
+.card {
+    border: 0px;
+}
+
+.contact-header{
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-header{
+    align-items: center;
+    justify-content: space-between;  
+}
+
+.profile-form{
+    font-size: 1rem;
+}
+
+.edit-icon {
+    color: #8a2be2;
+}
+
+.close-icon {
+    color: #fc0e0e;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}

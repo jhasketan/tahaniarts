@@ -6,12 +6,23 @@
     </button>
   </div>
   <div class="modal-body">
-    <div class="card mb-3">
+    <div class="card mb-3 w-100">
         <div class="row no-gutters">
-          <div class="col-md-4">
+          <div class="col-md-6">
             <img [src]="painting?.data?.images?.front" class="card-img p-3" alt="...">
+
+            <!-- <img src="someimage.png" onerror="ImgError(this);"/> -->
+
+            <div class="d-flex">
+              <img src="" class="select-image active mr-2">
+              <img src="" class="select-image mr-2">
+              <img src="" class="select-image mr-2">
+              <img src="" class="select-image mr-2">
+              <img src="" class="select-image mr-2">
+            </div>
+            
           </div>
-          <div class="col-md-8">
+          <div class="col-md-6">
             <div class="card-body">
               <h5 class="card-title">{{painting?.data?.name}}</h5>
               <p class="card-text mb-0"><small class="text-muted"><span class="fw-500">By:</span>{{painting?.data?.artist}}</small></p>
