@@ -22,11 +22,20 @@
         color:#000 !important;
     }
 }
-  .nav-item:hover{
+.nav-item{
+  padding-left:5px;
+  &:hover{
     background-color: #e9ecef !important;
-    padding-left:5px;
+    color:#000;
       
   } 
+}
+.dropdown-item{
+  &:hover{
+   background: #C67D47; 
+   color:white;
+  }
+}
   .login-text{
     color:#fff;
     font-size:14px;
