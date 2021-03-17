@@ -1,50 +1,118 @@
-
 <div class="modal-header">
-    <h4 class="modal-title pull-left">Painting review</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="card mb-3 w-100">
-        <div class="row no-gutters">
-          <div class="col-md-6">
-            <img [src]="painting?.data?.images?.front" class="card-img p-3" alt="...">
-
-            <!-- <img src="someimage.png" onerror="ImgError(this);"/> -->
-
-            <div class="d-flex">
-              <img src="" class="select-image active mr-2">
-              <img src="" class="select-image mr-2">
-              <img src="" class="select-image mr-2">
-              <img src="" class="select-image mr-2">
-              <img src="" class="select-image mr-2">
-            </div>
-            
+  <h4 class="modal-title pull-left text-uppercase">
+    {{ painting?.data?.name }} by {{ painting?.data?.artist }}
+  </h4>
+  <button
+    type="button"
+    class="close pull-right"
+    aria-label="Close"
+    (click)="close()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body p-0">
+  <div class="card mb-3 w-100">
+    <div class="row no-gutters">
+      <div class="col-md-6">
+        <div class="row p-0 m-0">
+          <div class="col-12 p-0">
+            <img
+              [src]="painting?.data?.images?.front"
+              class="card-img"
+              alt="..."
+            />
           </div>
-          <div class="col-md-6">
-            <div class="card-body">
-              <h5 class="card-title">{{painting?.data?.name}}</h5>
-              <p class="card-text mb-0"><small class="text-muted"><span class="fw-500">By:</span>{{painting?.data?.artist}}</small></p>
-              <p class="card-text"><small class="text-muted"><span class="fw-500">Added On:</span>{{painting?.data?.createdOn | date}}</small></p>
-              <p class="card-text"><span>Size: </span>{{painting?.data?.size?.height}}H X {{painting?.data?.size?.width}}W {{painting?.data?.size?.unit}}</p>
-              <p class="card-text"><span class="fw-500">Material:</span>{{painting?.data?.material}}</p>
-              <p class="card-text"><span class="fw-500">Medium:</span>{{painting?.data?.medium}}</p>
-              <p class="card-text"><span class="fw-500">Type:</span> {{painting?.data?.type}}</p>
-              <p class="card-text"><span class="fw-500">Description</span>{{painting?.data?.description}}</p>
-              <p class="card-text"><span class="fw-500"><i class="fas fa-rupee-sign"></i> </span> {{painting?.data?.price?.value}}</p>
-               <div class="d-flex flex-lg-row justify-content-end flex-column mr-3 mb-2">
-                    <button type="button" class="btn btn-default mb-2 mr-lg-2 text-uppercase btn-common">place order</button>
-                    <button type="button" class="btn btn-default mb-2 text-uppercase black-btn">Move to wishlist</button>
-               </div>
-            </div>
+        </div>
+        <div class="row p-0 m-0">
+          <div class="col-12 p-0">
+            <img
+              [src]="slide"
+              class="select-image active mr-2"
+              *ngFor="let slide of painting?.data?.images?.rest; let i = index"
+              alt="{{ slide + (i + 1) }}"
+            />
           </div>
+        </div>
+
+        <!-- <div class="d-flex"> -->
+        <!-- </div> -->
       </div>
-        <div class="btn-edit">
-        <button type="button" class="btn btn-default ml-2" (click)="openUpdateForm(painting.id)"><i class="fas fa-pencil"></i></button>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ painting?.data?.name }} by {{ painting?.data?.artist }}
+          </h5>
+
+          <p class="card-text">
+            <span class="fw-500">Size (W X H): </span
+            >{{ painting?.data?.size?.height }}
+            {{ painting?.data?.size?.unit }} X
+            {{ painting?.data?.size?.width }} {{ painting?.data?.size?.unit }}
+          </p>
+          <p class="card-text">
+            <span class="fw-500">Material : </span
+            >{{ painting?.data?.material }}
+          </p>
+          <p class="card-text">
+            <span class="fw-500">Medium : </span>{{ painting?.data?.medium }}
+          </p>
+          <p class="card-text">
+            <span class="fw-500">Type : </span> {{ painting?.data?.type }}
+          </p>
+          <p class="card-text">
+            <span class="fw-500">Description : </span
+            >{{ painting?.data?.description }}
+          </p>
+          <p class="card-text">
+            <span class="fw-600 text-danger"><i class="fas fa-rupee-sign"></i> </span>
+            {{ painting?.data?.price?.value }}
+          </p>
+          <p class="card-text">
+            <small class="text-muted"
+              ><span class="fw-500">Added On </span
+              >{{ painting?.data?.createdOn | date }}</small
+            >
+          </p>
+          <!-- <div
+            class="d-flex flex-lg-row justify-content-end flex-column mr-3 mb-2"
+          >
+            <button
+              type="button"
+              class="btn btn-default mb-2 mr-lg-2 text-uppercase btn-common"
+            >
+              place order
+            </button>
+            <button
+              type="button"
+              class="btn btn-default mb-2 text-uppercase black-btn"
+            >
+              Move to wishlist
+            </button>
+          </div> -->
         </div>
       </div>
+    </div>
+    <div class="btn-edit">
+      <button
+        type="button"
+        class="btn btn-default ml-2"
+        (click)="openUpdateForm(painting.id)"
+      >
+        <i class="fas fa-pencil"></i>
+      </button>
+    </div>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-common" (click)="close()">close</button>
-  </div>
+</div>
+<div class="modal-footer">
+  <!-- <button type="button" class="btn btn-common" (click)="close()">close</button> -->
+  <button
+    type="button"
+    class="btn btn-default mb-2 mr-lg-2 text-uppercase btn-common"
+  >
+    place order
+  </button>
+  <button type="button" class="btn btn-default mb-2 text-uppercase black-btn">
+    Move to wishlist
+  </button>
+</div>

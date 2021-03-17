@@ -24,6 +24,11 @@ export class HeaderComponent implements OnInit {
       console.error('-error--',err);
       this.userLoggedIn = false;
     })
+    this.authService.currentUserProfile.subscribe(res=>{
+      console.log('current user profile', res);
+    },err=>{
+      console.log('no user');
+    })
    }
 
   ngOnInit(): void {

@@ -1,61 +1,82 @@
 <nav class="navbar navbar-expand-lg">
-    <!-- <a class="navbar-brand text-uppercase" href="#">Tahani<sub>Arts</sub></a> -->
-    <a class="navbar-brand text-capitalize" href="#">
-      <img src="../../../assets/images/logoimg.jpeg" class="mr-2" width="60px">Tahaniarts</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mr-auto" *ngIf="userLoggedIn; else NotLoggedIn">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="home"
-            ><span><i class="fas fa-home pr-2"></i></span> Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="painting"><span><i class="fas fa-paint-brush pr-2"></i></span>Paintings</a>
-        </li>
-      </ul>
-
-     
-      <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-              <a class="nav-link" routerLink="order/wishlist"><i class="fas fa-heart pr-2"></i>Wish list</a>
-            </li>
-        <li class="nav-item">
-           <a class="nav-link" routerLink="order/proceed-to-checkout"><i class="fas fa-shopping-cart pr-2"></i>Cart</a>
-        </li>
-        
-          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle pr-1"></i><span>Profile</span></a>
-              <div class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-item" routerLink="manage-user/my-profile">My Profile</a>
-                <a class="dropdown-item" routerLink="order/list">My Orders</a>
-                <a class="dropdown-item" routerLink="query/queries-list">My Queries</a>
-                <!-- <a class="dropdown-item" routerLink="like">Wish List</a> -->
-                <a role="separator" class="dropdown-divider"></a>
-                <a class="dropdown-item" routerLink="settings">Settings</a>
-                <a class="dropdown-item" (click)="logout()">LogOut</a>
-              </div>
-            </li>
-            
-          </ul>
-     
-    </div>
-  </nav>
-  
-  <ng-template #NotLoggedIn>
-    <ul class="navbar-nav">
-      <li class="nav-item active login-text">
-        <a class="nav-link" routerLink="painting"><span>
-        Login</span></a></li>
+  <!-- <a class="navbar-brand text-uppercase" href="#">Tahani<sub>Arts</sub></a> -->
+  <a class="navbar-brand text-capitalize" href="#">
+    <img
+      src="../../../assets/images/logoimg.jpeg"
+      class="mr-2"
+      width="60px"
+    />Tahaniarts</a
+  >
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto" *ngIf="userLoggedIn; else NotLoggedIn">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="home"
+          ><span><i class="fas fa-home pr-2"></i></span> Home
+          <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="painting"
+          ><span><i class="fas fa-paint-brush pr-2"></i></span>Paintings</a
+        >
+      </li>
     </ul>
-  </ng-template>
-  
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="order/wishlist"
+          ><i class="fas fa-heart pr-2"></i>Wish list</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="order/proceed-to-checkout"
+          ><i class="fas fa-shopping-cart pr-2"></i>Cart</a
+        >
+      </li>
+
+      <li class="nav-item dropdown" *ngIf="userLoggedIn">
+        <a
+          class="nav-link dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          role="button"
+          aria-haspopup="true"
+          aria-expanded="false"
+          ><i class="fas fa-user-circle pr-1"></i><span>User</span></a
+        >
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" routerLink="manage-user/my-profile"
+            >My Profile</a
+          >
+          <a class="dropdown-item" routerLink="order/list">My Orders</a>
+          <a class="dropdown-item" routerLink="query/queries-list"
+            >My Queries</a
+          >
+          <!-- <a class="dropdown-item" routerLink="like">Wish List</a> -->
+          <a role="separator" class="dropdown-divider"></a>
+          <a class="dropdown-item" routerLink="settings">Settings</a>
+          <a class="dropdown-item" (click)="logout()">LogOut</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<ng-template #NotLoggedIn>
+  <ul class="navbar-nav">
+    <li class="nav-item active login-text">
+      <a class="nav-link" routerLink="painting"><span> Login</span></a>
+    </li>
+  </ul>
+</ng-template>

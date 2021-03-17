@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFirestore,
@@ -6,13 +6,15 @@ import {
 } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
   userData: Observable<firebase.default.User | null>;
   userCollection: AngularFirestoreCollection;
+  userProfileData = new BehaviorSubject<any>(null);
+  currentUserProfile = this.userProfileData.asObservable();
   constructor(
     private angularFireAuth: AngularFireAuth,
     private toaster: ToastrService,
@@ -21,6 +23,18 @@ export class AuthenticationService {
   ) {
     this.userData = angularFireAuth.authState;
     this.userCollection = this.firestore.collection('users');
+    //get user data from collection
+    this.userData.subscribe((res) => {
+      if (res) {
+        this.userCollection.ref
+          .where('uid', '==', res?.uid)
+          .get()
+          .then((res) => {
+            if (res && !res.empty) this.userProfileData.next(res.docs[0].data());
+            else this.userProfileData.next(null);
+          });
+      }
+    });
   }
 
   isAuthenticated() {
@@ -34,8 +48,12 @@ export class AuthenticationService {
         console.log('You are Successfully signed up!', res.user?.uid);
         userData.uid = res.user?.uid;
         // -- send verify email
-        // this.angularFireAuth.currentUser.
-        this.addUser(userData);
+        res.user?.sendEmailVerification().then((res) => {
+          this.toaster.success(
+            'A verification email has been sent to this email. Please follow the steps to activate your account'
+          );
+          this.addUser(userData);
+        });
       })
       .catch((error) => {
         console.log('Something is wrong:', error.message);
@@ -52,10 +70,12 @@ export class AuthenticationService {
     delete userData.password;
     this.userCollection
       .doc(id)
-      .set(userData).then(res=>{
+      .set(userData)
+      .then((res) => {
         this.toaster.success('You have been registered, happy shopping!');
         this.router.navigate(['home']);
-      }).catch(err=>{
+      })
+      .catch((err) => {
         this.toaster.error('Error registering user, please try again later');
       });
   }
@@ -93,9 +113,14 @@ export class AuthenticationService {
         this.router.navigate(['home']);
       })
       .catch((err) => {
-        this.toaster.error('Error while logging you in');
         localStorage.clear();
-        console.error('Something is wrong:', err.message);
+        console.error('Something is wrong:', err);
+        if(err && err.code === 'auth/user-not-found'){
+          this.toaster.error('No user found for the given email, please register or get in touch with an admin, if there is an issue');
+        }
+        else{
+          this.toaster.error('Error while logging you in');
+        }
       });
   }
 
@@ -106,11 +131,15 @@ export class AuthenticationService {
     });
   }
 
-  resetPassword(){
-    this.angularFireAuth.sendPasswordResetEmail('jhasketan.jena@gmail.com').then(res=>{
-      console.log('--password reset email response --',res);
-      this.toaster.success('Password reset link has been sent to this email, please check your inbox to proceed');
-      this.router.navigate(['login']);
-    })
+  resetPassword() {
+    this.angularFireAuth
+      .sendPasswordResetEmail('jhasketan.jena@gmail.com')
+      .then((res) => {
+        console.log('--password reset email response --', res);
+        this.toaster.success(
+          'Password reset link has been sent to this email, please check your inbox to proceed'
+        );
+        this.router.navigate(['login']);
+      });
   }
 }

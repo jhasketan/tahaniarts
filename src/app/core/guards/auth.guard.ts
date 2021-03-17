@@ -36,6 +36,9 @@ export class AuthGuard implements CanActivate {
         const emailId = res?.email;
         const uid = res?.uid;
         if (emailId && uid) {
+          this.authService.currentUserProfile.subscribe(user=>{
+            console.log('user profile',user);
+          })
           resolve(true);
         } else {
           localStorage.clear();

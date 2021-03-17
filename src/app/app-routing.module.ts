@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ForgotPasswordComponent } from './core/authentication/components/forgot-password/forgot-password.component';
 import { LoginComponent } from './core/authentication/components/login/login.component';
 import { SignupComponent } from './core/authentication/components/signup/signup.component';
+import { UserNotVerifiedComponent } from './core/authentication/components/user-not-verified/user-not-verified.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { SettingsComponent } from './core/settings/settings.component';
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent
+  },
+  {
+    path:'user-not-verified',
+    component:UserNotVerifiedComponent
   },
   {
     path: '**',

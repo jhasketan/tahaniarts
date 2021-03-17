@@ -24,7 +24,7 @@ export class PaintingFormComponent implements OnInit {
   };
   imageURLGenerated: string = '';
   sliderImageURLGenerated: { index: number; url: string }[] = [];
-  submitted: boolean = true;
+  submitted: boolean = false;
   // @ViewChild('paintingForm') form :NgForm;
   constructor(
     private paintingService: PaintingService,

@@ -23,6 +23,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { NgxSpinnerModule} from 'ngx-spinner';
+import { UserNotVerifiedComponent } from './core/authentication/components/user-not-verified/user-not-verified.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { NgxSpinnerModule} from 'ngx-spinner';
     ForgotPasswordComponent,
     HomeComponent,
     NotFoundComponent,
-    SettingsComponent
+    SettingsComponent,
+    UserNotVerifiedComponent
   ],
   imports: [
     BrowserModule,
